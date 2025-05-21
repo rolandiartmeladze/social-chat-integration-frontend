@@ -11,7 +11,7 @@ export default function Home() {
           This is the landing page for the Tsemi qualification assignment template.
         </p>
         <button className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer">
-         <a href="/user/messages"> See the assignment here </a>
+         <a href="./user/messages"> See the assignment here </a>
           </button>
       </main>
     </div>
