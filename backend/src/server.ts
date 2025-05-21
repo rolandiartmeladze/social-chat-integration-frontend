@@ -83,8 +83,7 @@ const sendMessage = async (senderId: string, text: string) => {
   }
 };
 
-app.get("/test", (_req: Request, res: Response) => {
-  console.log(PAGE_ACCESS_TOKEN)
+app.get("/", (_req: Request, res: Response) => {
   res.send("Hello World From Server!");
 });
 
@@ -94,6 +93,6 @@ app.get('/messages', (_req: Request, res: Response) => {
 });
 
 
-app.listen(process.env.PORT || 3001, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('Webhook is listening');
 });
