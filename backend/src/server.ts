@@ -21,5 +21,5 @@ app.get("/", (_req: Request, res: Response) => {
 });
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log('Webhook is listening');
+  console.log('Webhook is listening', process.env.PORT);
 });
