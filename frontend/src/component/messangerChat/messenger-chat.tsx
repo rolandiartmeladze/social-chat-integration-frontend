@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+
 import axios from 'axios';
 
 type Message = {
@@ -13,9 +14,11 @@ const MessengerChat = () => {
 
   useEffect(() => {
     const fetchMessages = async () => {
+      const backendUrl = "https://false-vintage-flea.glitch.me/";
       try {
-        const res = await axios.get('http://localhost:3000/messages');
+        const res = await axios.get(`${backendUrl}/messenger/messages`);
         setMessages(res.data);
+        console.log(res.data)
       } catch (error) {
         console.error('Error fetching messages:', error);
       }
