@@ -55,7 +55,7 @@ const MessengerChat = () => {
     <div className="p-4 max-w-xl mx-auto">
       <h2 className="text-xl font-bold mb-4">📩 Messenger is connected</h2>
       <h2 className="text-lg font-semibold mb-2">Name: </h2>
-      <h3 className="text-lg font-semibold mb-2">Conversations {conversations?.data?.length}</h3>
+      <h3 className="text-lg font-semibold mb-2">Conversations {conversations?.length}</h3>
       <div className="bg-white border rounded p-4 shadow">
         {messages.length === 0 ? (
           <p className="text-gray-500">No messages yet</p>
