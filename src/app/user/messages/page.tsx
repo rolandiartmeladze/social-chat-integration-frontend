@@ -1,6 +1,6 @@
-import InstagramChat from '@/component/instagramChat/instagram-chat';
-import MessengerChat from '../../../component/messangerChat/messenger-chat';
-import TelegramChat from '@/component/telegramChat/telegramChat';
+import InstagramChat from '@/components/instagramChat/instagram-chat';
+import MessengerChat from '../../../components/messangerChat/messenger-chat';
+import TelegramChat from '@/components/telegramChat/telegramChat';
 
 export default function MessagesPage() {
   return (
