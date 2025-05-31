@@ -21,11 +21,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 export default function SidebarWrapper() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <SidebarProvider>
+  
     <Sidebar
       collapsible="icon"
       data-open={isOpen}
-      className="w-64 h-screen bg-accent text-sidebar-foreground"
+      className="w-64"
     >
       <SidebarHeader className="relative flex items-center justify-between py-4">
         <div className="flex items-center gap-2">
@@ -66,6 +66,5 @@ export default function SidebarWrapper() {
         )}
       </SidebarFooter>
     </Sidebar>
-    </SidebarProvider>
   );
 }
