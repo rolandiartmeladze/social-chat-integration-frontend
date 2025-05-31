@@ -14,9 +14,9 @@ const InstagramChat = () => {
 
   useEffect(() => {
     const fetchMessages = async () => {
-      const backendUrl = "https://false-vintage-flea.glitch.me/";
+      const backendUrl = "https://false-vintage-flea.glitch.me/instagram";
       try {
-        const res = await axios.get(`${backendUrl}/messenger/messages`);
+        const res = await axios.get(`${backendUrl}/messages`);
         setMessages(res.data);
         console.log(res.data)
       } catch (error) {
