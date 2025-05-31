@@ -29,8 +29,8 @@ export default function InboxList() {
     }, []);
 
     return (
-        <div className="flex flex-col w-full h-screen bg-white">
-            <div className="flex items-center p-4 border-b border-gray-200">
+            <div className="flex items-start p-9 border-y-emerald-700">
+                Inbox
                 <ul>
                     {conversations.map((con) => (
                         <li key={con.conversationId} className="flex items-center p-2 hover:bg-gray-100">
@@ -42,6 +42,5 @@ export default function InboxList() {
                     ))}
                 </ul>
             </div>
-        </div>
     );
 }
