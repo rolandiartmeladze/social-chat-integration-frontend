@@ -2,7 +2,7 @@
 export default function Messages() {
 
     return (
-        <div className="flex w-full bg-green-800 h-screen">
+        <div className="flex bg-amber-800 p-9 h-full">
             messages
         </div>
 
