@@ -6,7 +6,6 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarTrigger,
-  SidebarProvider,
 } from "@/components/ui/sidebar";
 
 import {
