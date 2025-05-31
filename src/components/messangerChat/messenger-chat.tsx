@@ -41,6 +41,8 @@ const MessengerChat = () => {
         setMessages(res.data);
         console.log(res.data)
       } catch (error) {
+                setMessages([]);
+
         console.error('Error fetching messages:', error);
       }
     };
@@ -79,3 +81,8 @@ const MessengerChat = () => {
 };
 
 export default MessengerChat;
+
+
+
+
+
