@@ -36,8 +36,8 @@ export default function InboxList() {
   }, []);
 
   return (
-    <div className="p-6 max-w-xl mx-auto">
-      <h2 className="text-xl font-bold mb-4">📨 Conversations</h2>
+    <div className="p-6 max-w-xl mx-auto border-l">
+      <h2 className="text-xl font-bold mb-4">📨 My Inbox</h2>
       {loading ? (
         <p>Loading...</p>
       ) : conversations.length === 0 ? (
