@@ -1,4 +1,6 @@
 import { Button } from "../ui/button";
+import { Icons } from "../icons";
+import Link from "next/link";
 
 export default function Topbar() {
     return (
@@ -8,8 +10,15 @@ export default function Topbar() {
                     <a href="#" className="text-white hover:text-gray-300">Home</a>
                 </li>
             </ul>
-            <Button variant="secondary" className="text-white bg-gray-500 hover:bg-gray-600">
-                Staff
+            <Button
+                asChild
+                variant="secondary"
+                size="lg"
+                className="rounded-[5px] py-5 px-4 flex gap-6 items-center justify-center"
+            >
+                <Link href="/staffChat">
+                    <Icons.chat /> <samp>Staff Chat</samp>
+                </Link>
             </Button>
         </nav>
     );
