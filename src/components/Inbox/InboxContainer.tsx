@@ -3,7 +3,7 @@ import Messages from "../messages/messages";
 
 export default function InboxContainer() {
     return (
-        <div className="flex h-full flex-row bg-amber-600 border ">
+        <div className="flex h-full flex-row rounded-2xl bg-secondary">
             <Messages />
             <InboxList />
         </div>
