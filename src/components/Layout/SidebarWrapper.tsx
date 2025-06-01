@@ -27,7 +27,7 @@ export default function SidebarWrapper() {
       className="w-64 border-none"
     >
       <SidebarHeader className="relative flex items-center justify-between py-4">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-5">
           {isOpen && (
             <TooltipProvider>
               <Tooltip>
