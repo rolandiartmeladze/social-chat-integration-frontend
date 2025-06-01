@@ -24,7 +24,7 @@ export default function SidebarWrapper() {
     <Sidebar
       collapsible="icon"
       data-open={isOpen}
-      className="w-64"
+      className="w-64 border-none"
     >
       <SidebarHeader className="relative flex items-center justify-between py-4">
         <div className="flex items-center gap-2">
