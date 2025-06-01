@@ -2,7 +2,7 @@ import { Button } from "../ui/button";
 
 export default function Topbar() {
     return (
-        <nav className="bg-black p-4 flex justify-between">
+        <nav className="bg-background p-4 flex justify-between">
             <ul className="flex">
                 <li>
                     <a href="#" className="text-white hover:text-gray-300">Home</a>
