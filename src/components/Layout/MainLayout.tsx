@@ -8,17 +8,17 @@ import { ConversationProvider } from '@/context/ConversationContext';
 
 export default function MainLayout() {
   return (
-    <div className="flex bg-background h-screen text-foreground overflow-hidden">
+    <div className="flex h-screen relative bg-background text-foreground overflow-hidden">
       <SidebarProvider>
         <SidebarWrapper />
-        <div className="flex pb-3 flex-col w-full h-full">
+        <div className="flex flex-col relative w-full h-full">
           <Topbar />
           <ConversationProvider>
-            <div className="grid min-h-dvh gap-2 p-3 grid-cols-[auto_1fr_auto]">
-            <InboxContainer />
-            <ChatWindow />
-            <DetailsSection />
-          </div> 
+            <div className="grid gap-2 p-2 grid-cols-[auto_1fr_auto] h-full overflow-auto">
+              <InboxContainer />
+              <ChatWindow />
+              <DetailsSection />
+            </div>
           </ConversationProvider>
         </div>
       </SidebarProvider>
