@@ -29,7 +29,7 @@ export async function FetchConversations(): Promise<Conversation[] | null> {
       const lastMsg: Message = {
         id: conv.conversationId + "_msg",
         sender: user,
-        content: conv.lastMessage,
+        text: conv.lastMessage,
         timestamp: new Date().toISOString(),
         read: true,
       };
