@@ -17,7 +17,9 @@ export default function ChatMessages() {
             <ScrollArea>
                 <ul className="flex flex-col gap-2">
                     {activeConvData.messages?.map((msg: Message, index: number) => (
-                        <li className="text-sm mt-2 bg-accent border-b" key={index}>{msg?.text}</li>
+                        <li className="text-sm mt-2 bg-accent border-b" key={index}>
+                            {msg?.text}
+                            </li>
                     ))}
                 </ul>
             </ScrollArea>
