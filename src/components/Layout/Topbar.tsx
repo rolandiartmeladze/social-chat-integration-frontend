@@ -16,7 +16,7 @@ export default function Topbar() {
                 size="lg"
                 className="rounded-[5px] py-5 px-4 flex gap-6 items-center justify-center"
             >
-                <Link href="/staffChat">
+                <Link href="/">
                     <Icons.chat /> <samp>Staff Chat</samp>
                 </Link>
             </Button>
