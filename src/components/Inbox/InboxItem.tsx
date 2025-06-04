@@ -1,5 +1,5 @@
 import { Conversation } from "@/models/conversation.model";
-import { Avatar, AvatarImage } from "../ui/avatar";
+import { UserAvatar } from "../UserAvatar/avatar";
 
 interface ConversationProps {
     conv: Conversation;
@@ -8,7 +8,6 @@ interface ConversationProps {
 }
 
 export default function ConversationItem({ conv, onClick, isActive }: ConversationProps) {
-    console.log(conv);
     return (
         <li
             key={conv.id}
@@ -19,13 +18,8 @@ export default function ConversationItem({ conv, onClick, isActive }: Conversati
             onClick={onClick}
 
         >
-            <Avatar className="size-7">
-                <AvatarImage
-                    src={conv.participants[0].avatarUrl}
-                    alt={conv.participants[0].name}
-                    className="w-6 h-6 rounded-full"
-                />
-            </Avatar>
+
+            <UserAvatar src={conv.participants[0].avatarUrl} alt={conv.participants[0].name} />
             <div className="flex flex-col gap-1">
                 <h3 className="text-base">{conv.participants[0].name}</h3>
                 <p className="text-foreground text-sm">{conv.messages[0].text.substring(0, 25)}
