@@ -2,11 +2,12 @@
 
 import { useConversation } from "@/context/ConversationContext";
 import { UserAvatar } from "../UserAvatar/avatar";
+import { User } from "@/models/conversation.model";
 
 export default function ChatHeader() {
   const { activeConvData } = useConversation();
-  const participant = activeConvData?.messages?.[1]?.sender 
-                 ?? activeConvData?.messages?.[0]?.sender;
+console.log(activeConvData);
+  const participant:User | undefined = activeConvData?.participants[1];
 
   if (!participant) return <p>No participant found</p>;
 
