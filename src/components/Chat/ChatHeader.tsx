@@ -5,7 +5,9 @@ import { UserAvatar } from "../UserAvatar/avatar";
 
 export default function ChatHeader() {
   const { activeConvData } = useConversation();
-  const participant = activeConvData?.messages?.participants[1];
+  const participant = activeConvData?.messages?.[1]?.sender 
+                 ?? activeConvData?.messages?.[0]?.sender;
+
   if (!participant) return <p>No participant found</p>;
 
   return (
