@@ -37,7 +37,6 @@ export default function InboxList() {
             key={conv.id}
             conv={conv}
             onClick={() => {
-              console.log("Selected Conversation ID:", conv.id);
               setActiveConvId(conv.id);
             }}
           />
