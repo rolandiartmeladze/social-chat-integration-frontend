@@ -8,6 +8,7 @@ interface ConversationProps {
 }
 
 export default function ConversationItem({ conv, onClick, isActive }: ConversationProps) {
+    console.log(conv);
     return (
         <li
             key={conv.id}
