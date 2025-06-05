@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState } from "react";
-import OpenConversation from "@/components/Inbox/OpenConversation";
+import { OpenConversation } from "@/components/Inbox/OpenConversation";
 import { Conversation } from "@/models/conversation.model";
 
 interface ConversationContextType {
@@ -19,7 +19,7 @@ export const ConversationProvider = ({ children }: { children: React.ReactNode }
   const handleSetActiveConvId = async (id: string) => {
     setActiveConvId(id);
     const response = await OpenConversation({ activeConvId: id });
-    setActiveConvData(response?.data);
+    setActiveConvData(response?.data?.conversation);
   };
 
   return (

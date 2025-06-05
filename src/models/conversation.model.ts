@@ -19,3 +19,16 @@ export interface Conversation {
     lastUpdated: string;
     unreadCount?: number;
 }
+
+export interface Conv {
+  conversationId: string;
+  avatar?: string;
+  user: {
+    id: string;
+    name: string;
+    avatar: string;
+  };
+  page: string;
+  platform: string;
+  lastMessage: string;
+}

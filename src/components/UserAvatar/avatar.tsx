@@ -4,7 +4,7 @@ import { Icons } from "../icons";
 
 type Props = {
   src?: string;
-  alt: string;
+  alt?: string;
 };
 
 export function UserAvatar({ src, alt }: Props) {
