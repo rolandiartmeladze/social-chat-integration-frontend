@@ -10,7 +10,6 @@ interface ConversationProps {
 
 export default function ConversationItem({ conv, onClick, isActive }: ConversationProps) {
   const PlatformIcon = Icons[conv.platform as keyof typeof Icons];
-
   return (
     <li
       key={conv.conversationId}
@@ -21,7 +20,7 @@ export default function ConversationItem({ conv, onClick, isActive }: Conversati
       onClick={onClick}
     >
       <div className="relative">
-        <UserAvatar src={conv.user.avatar} alt={conv.user.name} />
+        <UserAvatar src={conv?.participants?.user?.avatarUrl} alt={conv?.participants?.user.name} />
         {PlatformIcon && (
           <div className="absolute bottom-0 right-1 rounded-full p-0.5">
             <PlatformIcon className="size-3" />
@@ -30,9 +29,9 @@ export default function ConversationItem({ conv, onClick, isActive }: Conversati
       </div>
 
       <div className="flex flex-col gap-1">
-        <h3 className="text-base leading-5">{conv.user.name}</h3>
+        <h3 className="text-base leading-5">{conv?.participants?.user?.name}</h3>
         <p className="text-sm text-muted-foreground truncate max-w-[200px]">
-          {conv.lastMessage || "No messages yet."}
+          {conv?.messages?.text || "No messages yet."}
         </p>
       </div>
     </li>

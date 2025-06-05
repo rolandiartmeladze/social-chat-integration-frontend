@@ -22,13 +22,11 @@ export interface Conversation {
 
 export interface Conv {
   conversationId: string;
-  avatar?: string;
-  user: {
-    id: string;
-    name: string;
-    avatar: string;
+  participants: {
+    user: User;
+    page: User;
   };
-  page: string;
   platform: string;
-  lastMessage: string;
+  messages: Message;
+  lastUpdated: string;
 }
