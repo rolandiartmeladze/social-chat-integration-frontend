@@ -1,30 +1,40 @@
-import { Conversation } from "@/models/conversation.model";
 import { UserAvatar } from "../UserAvatar/avatar";
+import { Conv } from "@/models/conversation.model";
+import { Icons } from "../icons";
 
 interface ConversationProps {
-    conv: Conversation;
-    isActive: boolean;
-    onClick: () => void;
+  conv: Conv;
+  isActive: boolean;
+  onClick: () => void;
 }
 
 export default function ConversationItem({ conv, onClick, isActive }: ConversationProps) {
-    return (
-        <li
-            key={conv.id}
-            className={`p-3 flex gap-1 border-b cursor-pointer hover:bg-muted hover:border hover:rounded-2xl 
-                ${isActive ?
-                     'bg-muted/20 border duration-300 transition-all rounded-2xl font-semibold'
-                    : 'hover:bg-muted/70'}`}
-            onClick={onClick}
+  const PlatformIcon = Icons[conv.platform as keyof typeof Icons];
 
-        >
+  return (
+    <li
+      key={conv.conversationId}
+      className={`p-3 flex items-center gap-3 border-b cursor-pointer transition-all 
+        ${isActive
+          ? "bg-muted/20 border rounded-2xl font-semibold"
+          : "hover:bg-muted hover:border hover:rounded-2xl"}`}
+      onClick={onClick}
+    >
+      <div className="relative">
+        <UserAvatar src={conv.user.avatar} alt={conv.user.name} />
+        {PlatformIcon && (
+          <div className="absolute bottom-0 right-1 rounded-full p-0.5">
+            <PlatformIcon className="size-3" />
+          </div>
+        )}
+      </div>
 
-            <UserAvatar src={conv.participants[0].avatarUrl} alt={conv.participants[0].name} />
-            <div className="flex flex-col gap-1">
-                <h3 className="text-base">{conv.participants[0].name}</h3>
-                <p className="text-foreground text-sm">{conv.messages[0].text.substring(0, 25)}
-                </p>
-            </div>
-        </li>
-    )
+      <div className="flex flex-col gap-1">
+        <h3 className="text-base leading-5">{conv.user.name}</h3>
+        <p className="text-sm text-muted-foreground truncate max-w-[200px]">
+          {conv.lastMessage || "No messages yet."}
+        </p>
+      </div>
+    </li>
+  );
 }
