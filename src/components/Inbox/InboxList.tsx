@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import { FetchConversations } from "@/hooks/fetch-conversations"
-import { Conversation } from '@/models/conversation.model';
+import { Conv } from '@/models/conversation.model';
 import { Icons } from '../icons';
 import SortConversations from './InboxSort';
 import ConversationItem from './InboxItem';
 import { useConversation } from "@/context/ConversationContext";
 
 export default function InboxList() {
-  const [conversations, setConversations] = useState<Conversation[]>([]);
+  const [conversations, setConversations] = useState<Conv[]>([]);
   const { setActiveConvId, activeConvId } = useConversation();
 
   useEffect(() => {
@@ -17,12 +17,12 @@ export default function InboxList() {
       const ConvList = await FetchConversations();
       if (ConvList && ConvList.length > 0) {
         setConversations(ConvList);
-        setActiveConvId(ConvList[0].id);
+        setActiveConvId(ConvList[0].conversationId);
       }
     };
     loadConversations();
   }, []);
-
+console.log(conversations);
   return (
     <div className="w-85 mx-auto border-l">
       <h2 className="text-xl  border-b items-center flex gap-3 p-4">
@@ -33,11 +33,11 @@ export default function InboxList() {
       <ul className="px-3 flex flex-col gap-3">
         {conversations.map((conv) => (
           <ConversationItem
-            isActive={conv.id === activeConvId}
-            key={conv.id}
+            isActive={conv.conversationId === activeConvId}
+            key={conv.conversationId}
             conv={conv}
             onClick={() => {
-              setActiveConvId(conv.id);
+              setActiveConvId(conv.conversationId);
             }}
           />
         ))}
