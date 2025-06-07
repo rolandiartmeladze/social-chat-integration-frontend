@@ -6,8 +6,8 @@ import { Input } from "../ui/input";
 
 export default function ChatInput() {
   return (
-    <div className="flex w-full p-3 gap-2 items-center bg-secondary/60 border-t">
-     <Icons.add />
+    <div className="flex w-full py-1 px-3 gap-2 items-center bg-secondary/60 border-t">
+     <Icons.add className="size-9" />
       <Input className="border-none outline-none " placeholder="Write your message..." />
       <div className="flex gap-1 items-center">
         <Icons.smile /> 
