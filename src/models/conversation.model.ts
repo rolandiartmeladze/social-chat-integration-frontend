@@ -27,6 +27,6 @@ export interface Conv {
     page: User;
   };
   platform: string;
-  messages: Message;
+  messages: Message[];
   lastUpdated: string;
 }
