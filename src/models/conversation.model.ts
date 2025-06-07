@@ -14,7 +14,7 @@ export interface Message {
 
 export interface Conversation {
     id: string;
-    participants: User[];
+    participants: Participants;
     messages: Message[];
     lastUpdated: string;
     unreadCount?: number;
@@ -22,11 +22,13 @@ export interface Conversation {
 
 export interface Conv {
   conversationId: string;
-  participants: {
-    user: User;
-    page: User;
-  };
+  participants:Participants;
   platform: string;
   messages: Message[];
   lastUpdated: string;
+}
+
+export interface Participants {
+  user: User;
+  page: User;
 }
