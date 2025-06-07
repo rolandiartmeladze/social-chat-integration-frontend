@@ -5,13 +5,14 @@ import { Icons } from "../icons";
 type Props = {
   src?: string;
   alt?: string;
+  className?: string;
 };
 
-export function UserAvatar({ src, alt }: Props) {
+export function UserAvatar({ src, alt, className }: Props) {
   const [error, setError] = useState(false);
 
   return (
-    <Avatar className="mr-3 size-9">
+     <Avatar className={`${className || ""}`}>
       {!error && src && src !== "" ? (
         <AvatarImage
           src={src}
