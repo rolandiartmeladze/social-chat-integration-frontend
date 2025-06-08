@@ -12,8 +12,8 @@ export function UserAvatar({ src, alt, className }: Props) {
   const [error, setError] = useState(false);
 
   return (
-     <Avatar className={`${className || ""}`}>
-      {!error && src && src !== "" ? (
+    <Avatar className={`${className || ""}`}>
+      {!error && !!src?.trim() ? (
         <AvatarImage
           src={src}
           alt={alt}
