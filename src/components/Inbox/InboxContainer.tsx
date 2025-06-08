@@ -1,10 +1,10 @@
 import InboxList from "./InboxList";
-import Messages from "../messages/messages";
+import InBoxSidebar from "./InBoxSidebar";
 
 export default function InboxContainer() {
     return (
         <div className="flex flex-row h-full rounded-2xl bg-secondary">
-            <Messages />
+            <InBoxSidebar />
             <InboxList />
         </div>
     );

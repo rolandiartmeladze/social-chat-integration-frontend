@@ -1,8 +1,14 @@
-
-export default function InboxHeader() {
-    return (
-        <div className="flex w-full bg-blue-400">
-           <h1 className="text-white p-4">Inbox Header</h1>
-        </div>
-    );
+export default function InboxHeader({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <header className={`flex text-2xl justify-between items-center gap-3 p-4 ${className}`}>
+      {children}
+    </header>
+  );
 }
+

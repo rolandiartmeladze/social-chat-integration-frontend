@@ -7,6 +7,7 @@ import { Icons } from '../icons';
 import SortConversations from './InboxSort';
 import ConversationItem from './InboxItem';
 import { useConversation } from "@/context/ConversationContext";
+import InboxHeader from './InboxHeader';
 
 export default function InboxList() {
   const [conversations, setConversations] = useState<Conv[]>([]);
@@ -22,13 +23,13 @@ export default function InboxList() {
     };
     loadConversations();
   }, []);
-console.log(conversations);
+  console.log(conversations);
   return (
     <div className="w-85 mx-auto border-l">
-      <h2 className="text-xl  border-b items-center flex gap-3 p-4">
+      <InboxHeader className='border-b justify-start'>
         <Icons.panelLeft />
         <samp className="text-2xl">My Inbox</samp>
-      </h2>
+      </InboxHeader>
       <SortConversations />
       <ul className="px-3 flex flex-col gap-3">
         {conversations.map((conv) => (
