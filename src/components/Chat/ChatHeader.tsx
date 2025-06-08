@@ -2,24 +2,41 @@
 
 import { useConversation } from "@/context/ConversationContext";
 import { UserAvatar } from "../UserAvatar/avatar";
+import { Icons } from "@/components/icons";
 
 export default function ChatHeader() {
   const { activeConvData } = useConversation();
-  console.log(activeConvData);
-
+  const PlatformIcon = Icons[activeConvData?.platform as keyof typeof Icons];
   if (!activeConvData?.participants) return <p>No participant found</p>;
-
+const iconButtons = [
+  { Icon: Icons.star, label: "Star" },
+  { Icon: Icons.ellipsis, label: "More Options" },
+  { Icon: Icons.pause, label: "Pause" },
+  { Icon: Icons.inBox, label: "Inbox" },
+];
   return (
-    <div className="flex items-center w-full p-4 h-16 border-b">
-      {activeConvData.participants.user &&
-        <>
-          <UserAvatar
-            src={activeConvData?.participants.user.avatarUrl}
-            alt={activeConvData?.participants.user.name?.slice(0, 2).toUpperCase()}
-          />
-          <h3 className="text-md font-medium">{activeConvData?.participants.user.name}</h3>
-        </>
-        }
+    <div className="flex items-center justify-between w-full p-4 h-16 border-b">
+      <div className="flex gap-4">
+        <UserAvatar
+          src={activeConvData?.participants.user.avatarUrl || ""}
+          alt={activeConvData?.participants.user.name?.slice(0, 2).toUpperCase()}
+        />
+        <div className="flex flex-col">
+          <h3 className="text-md font-medium">{activeConvData?.participants.user.name || "User Is Unknown"}</h3>
+          <samp className="flex gap-2 items-center pl-2"><PlatformIcon className="size-5" />{activeConvData?.platform}</samp>
+        </div>
+      </div>
+      <div className="flex gap-3">
+        {iconButtons.map(({ Icon, label }, index) => (
+          <span
+            key={index}
+            className="bg-[#515151] flex items-center justify-center size-9 rounded-full p-2"
+            title={label}
+          >
+            <Icon className="size-4" />
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
