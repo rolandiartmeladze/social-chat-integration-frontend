@@ -1,3 +1,5 @@
+export type Platform = 'telegram' | 'messenger' | 'instagram';
+
 export interface User {
     id: string;
     name: string;
@@ -17,6 +19,7 @@ export interface Conversation {
     participants: Participants;
     messages: Message[];
     lastUpdated: string;
+    platform: string;
     unreadCount?: number;
 }
 
