@@ -2,17 +2,23 @@
 
 import { useConversation } from "@/context/ConversationContext";
 import { Message } from "@/models/conversation.model";
-import { ScrollArea } from "../ui/scroll-area";
 import { UserAvatar } from "../UserAvatar/avatar";
 import { cn } from "@/lib/utils";
+
+function formatTime(timestamp: string) {
+  return new Date(timestamp).toLocaleTimeString("ka-GE", {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+} 
 
 export default function ChatMessages() {
   const { activeConvData } = useConversation();
   if (!activeConvData) return <p>No participant found</p>;
-
+console.log(activeConvData);
   return (
-    <ScrollArea className="flex flex-col justify-end h-full px-4">
-      <ul className="flex flex-col-reverse gap-3 overflow-y-auto max-h-[calc(100vh-200px)] pr-2">
+    <div className="chat-scroll h-[calc(100vh-200px)] overflow-y-auto flex flex-col-reverse px-4" >
+      <ul className="flex flex-col-reverse gap-3 py-2">
         {activeConvData?.messages?.map((msg: Message, index: number) => (
           <li key={index} className={cn(
             "flex gap-2",
@@ -29,15 +35,15 @@ export default function ChatMessages() {
               alt={msg.sender.name?.slice(0, 2).toUpperCase()}
             />
 
-            <p className={cn(
-              "p-2 text-sm max-w-[75%] break-words  bg-muted/60 rounded-2xl",
+            <div className={cn(
+              "flex flex-col p-2 text-sm w-auto max-w-[75%] break-words  bg-muted/60 rounded-2xl",
               msg.sender.id === activeConvData.participants.page.id
-                ? "rounded-tr-none self-end"
-                : "rounded-tl-none self-start bg-muted/15"
-            )}>{msg.text}</p>
+                ? "rounded-tr-none items-end"
+                : "rounded-tl-none items-start bg-muted/15"
+            )}><p>{msg.text}</p> <samp className="text-background float-right">{formatTime(msg.timestamp)}</samp>
+</div>
           </li>
         ))}
       </ul>
-    </ScrollArea>
-  );
+</div>  );
 }
