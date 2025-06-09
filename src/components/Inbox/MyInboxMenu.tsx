@@ -6,7 +6,7 @@ import { UserAvatar } from "../UserAvatar/avatar";
 export default function InboxMenu() {
     const items: CommandMenu[] = [
         {
-            icon: <UserAvatar className="size-5" src="https://avatars.githubusercontent.com/u/13499054?v=4" alt="My_Inbox" />,
+            icon: <UserAvatar className="size-6 border-2 border-white"  src="https://avatars.githubusercontent.com/u/13499054?v=4" alt="My_Inbox" />,
             label: "My Inbox",
             count: 4,
         },
@@ -21,8 +21,8 @@ export default function InboxMenu() {
             <CommandList>
                 <CommandGroup>
                     {items.map((item, index) => (
-                        <CommandItem className="flex justify-between items-center text-lg font-xl" key={index} >
-                            <div className="flex gap-3 items-center">
+                        <CommandItem className="flex cursor-pointer justify-between items-center text-lg font-xl" key={index} >
+                            <div className="flex gap-3 items-center text-foreground">
                                 {item.icon}
                                 <samp className="text-base font-lg">{item.label}</samp>
                             </div>
