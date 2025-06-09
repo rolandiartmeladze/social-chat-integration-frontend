@@ -9,15 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: 'var(--primary)',
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        primary: 'var(--primary)',
         secondary: 'var(--secondary)',
         muted: 'var(--muted)',
         border: 'var(--border)',
+        danger: 'var(--danger)',
+        accent: 'var(--accent)',
+        info: 'var(--info)',
       },
       borderRadius: {
         sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 10px)",
         lg: "calc(var(--radius) - 16px)",
       },
       fontSize: {
