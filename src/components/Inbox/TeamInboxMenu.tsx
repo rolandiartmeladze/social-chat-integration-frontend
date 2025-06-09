@@ -26,7 +26,7 @@ export default function TeamInboxMenu() {
                             <div className="flex gap-3 items-center">
                                 <input
                                     type="checkbox"
-                                    checked checked={checked}
+                                    checked={checked}
                                     onChange={(e) => setChecked(e.target.checked)} className="size-5 accent-foreground border-2 border-gray-300 rounded focus:ring-2 focus:ring-offset-2 focus:ring-primary" />
                                 {item.icon}
                                 <samp className="text-base font-lg">{item.label}</samp>
