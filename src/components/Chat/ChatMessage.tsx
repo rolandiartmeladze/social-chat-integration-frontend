@@ -17,7 +17,7 @@ export default function ChatMessages() {
   if (!activeConvData) return <p>No participant found</p>;
 console.log(activeConvData);
   return (
-    <div className="chat-scroll h-[calc(100vh-200px)] overflow-y-auto flex flex-col-reverse px-4" >
+    <div className="scroll h-[calc(100vh-200px)] overflow-y-auto flex flex-col-reverse px-4" >
       <ul className="flex flex-col-reverse gap-3 py-2">
         {activeConvData?.messages?.map((msg: Message, index: number) => (
           <li key={index} className={cn(
