@@ -29,8 +29,8 @@ export default function ConversationItem({ conv, onClick, isActive }: Conversati
       </div>
 
       <div className="flex flex-col gap-1">
-        <h3 className="text-base leading-5">{conv?.participants?.user?.name}</h3>
-        <p className="text-sm text-muted-foreground truncate max-w-[200px]">
+        <h3 className="text-base font-xl">{conv?.participants?.user?.name}</h3>
+        <p className="text-base font-basic text-muted-foreground max-w-full">
           {conv?.messages[0]?.text || "No messages yet."}
         </p>
       </div>

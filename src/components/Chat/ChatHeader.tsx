@@ -22,7 +22,7 @@ const iconButtons = [
           alt={activeConvData?.participants.user.name?.slice(0, 2).toUpperCase()}
         />
         <div className="flex flex-col">
-          <h3 className="text-md font-medium">{activeConvData?.participants.user.name || "User Is Unknown"}</h3>
+          <h3 className="text-xl font-xl">{activeConvData?.participants.user.name || "User Is Unknown"}</h3>
           <samp className="flex gap-2 items-center pl-2"><PlatformIcon className="size-5" />{activeConvData?.platform}</samp>
         </div>
       </div>
