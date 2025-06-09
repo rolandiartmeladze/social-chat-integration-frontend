@@ -3,7 +3,7 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import Topbar from "@/components/Layout/Topbar";
 import InboxContainer from "../Inbox/InboxContainer";
 import ChatWindow from "../Chat/ChatWindow";
-import DetailsSection from "../DetailsPanel/DetailsSection";
+import DetailsPanel from "../DetailsPanel/DetailsPanel";
 import { ConversationProvider } from '@/context/ConversationContext';
 
 export default function MainLayout() {
@@ -17,7 +17,7 @@ export default function MainLayout() {
             <div className="grid gap-2 p-2 grid-cols-[auto_1fr_auto] h-full overflow-auto">
               <InboxContainer />
               <ChatWindow />
-              <DetailsSection />
+              <DetailsPanel />
             </div>
           </ConversationProvider>
         </div>

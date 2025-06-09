@@ -10,8 +10,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 
   --color-ring: var(--ring);
   --color-border: var(--border);
@@ -46,22 +44,22 @@
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
 }
 
 
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
-  --primary: #6b1a0b;
-  --secondary:#393837; 
-  --muted:#969393;
-  --border: #949191;
+  --background: #1F1F1E;        /* მთავარი ფონური ფერი */
+  --foreground: #FFFFFF;        /* ტექსტის ძირითადი ფერი */
+  --primary: #4285F4;           /* ღილაკები ან აქტიური ელემენტები */
+  --secondary: #393837;        /* ბექგრაუნდ ბოქსებისთვის */
+  --secondary-foreground: #787775;
+  --muted: #929292;             /* დაბალი კონტრასტის ტექსტისთვის */
+  --muted-foreground: #C9C6C5;
+  --border: #4E4E4E;            /* საზღვარი ელემენტებისთვის */
+  --danger: #F44336;            /* შეცდომის ფერი */
+  --accent:#434241;            /* აქცენტის ფერი */
+  --info: #3771C8;              /* ლინკები ან ინფო ტექსტი */
 }
-
 .scroll::-webkit-scrollbar {
   width: 6px;
 }
@@ -71,13 +69,13 @@
 }
 
 .scroll::-webkit-scrollbar-thumb {
-  background-color: rgba(100, 116, 139, 0.4);
-  border-radius: 10px;
+  background-color: #C9C6C5;
+  border-radius: 4px;
 }
 
 .scroll {
   scrollbar-width: thin;
-  scrollbar-color: rgba(100, 116, 139, 0.4) transparent;
+  scrollbar-color: #C9C6C5 transparent;
 }
 
 

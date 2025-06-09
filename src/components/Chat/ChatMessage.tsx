@@ -4,13 +4,7 @@ import { useConversation } from "@/context/ConversationContext";
 import { Message } from "@/models/conversation.model";
 import { UserAvatar } from "../UserAvatar/avatar";
 import { cn } from "@/lib/utils";
-
-function formatTime(timestamp: string) {
-  return new Date(timestamp).toLocaleTimeString("ka-GE", {
-    hour: "2-digit",
-    minute: "2-digit"
-  });
-} 
+import { getTimeAgo } from "@/hooks/getTimeAgo";
 
 export default function ChatMessages() {
   const { activeConvData } = useConversation();
@@ -36,11 +30,11 @@ console.log(activeConvData);
             />
 
             <div className={cn(
-              "flex flex-col p-2 text-sm w-auto max-w-[75%] break-words  bg-muted/60 rounded-2xl",
+              "flex flex-col p-2 text-sm w-auto max-w-[75%] break-words rounded-2xl",
               msg.sender.id === activeConvData.participants.page.id
-                ? "rounded-tr-none items-end"
-                : "rounded-tl-none items-start bg-muted/15"
-            )}><p>{msg.text}</p> <samp className="text-background float-right">{formatTime(msg.timestamp)}</samp>
+                ? "rounded-tr-none items-end bg-[#4E4E4E]"
+                : "rounded-tl-none items-start bg-muted/30"
+            )}><p>{msg.text}</p> <samp className="text-secondary-foreground">{getTimeAgo(msg.timestamp)}</samp>
 </div>
           </li>
         ))}

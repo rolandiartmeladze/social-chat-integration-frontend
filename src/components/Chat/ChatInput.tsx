@@ -35,7 +35,7 @@ export default function ChatInput() {
   };
 
   return (
-    <div className="flex w-full py-1 px-3 gap-2 items-center bg-secondary/60 border-t">
+    <div className="flex w-full py-1 px-3 gap-2 items-center bg-accent border-t-2">
       <Icons.add className="size-9" />
       <Input
         className="border-none outline-none"
@@ -47,7 +47,7 @@ export default function ChatInput() {
       <div className="flex gap-1 items-center">
         <Icons.smile />
         <Button
-          className="bg-muted/60 hover:bg-muted cursor-pointer rounded-2xl"
+          className="bg-muted cursor-pointer rounded-sm text-foreground"
           variant="secondary"
           size="sm"
           onClick={sendMessage}
