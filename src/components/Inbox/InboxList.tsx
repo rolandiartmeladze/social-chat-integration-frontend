@@ -28,7 +28,7 @@ export default function InboxList() {
     <div className="w-85 border-l">
       <InboxHeader className='border-b justify-start'>
         <Icons.panelLeft />
-        <samp className="text-2xl">My Inbox</samp>
+        <samp className="text-xl font-lg">My Inbox</samp>
       </InboxHeader>
       <SortConversations />
       <ul className="scroll px-3 flex flex-col gap-3 h-[calc(100vh-220px)] overflow-y-auto">
