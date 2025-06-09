@@ -6,7 +6,7 @@ export default function InboxHeader({
   children: React.ReactNode;
 }) {
   return (
-    <header className={`flex text-2xl justify-between items-center gap-3 p-4 ${className}`}>
+    <header className={`flex justify-between items-center gap-3 p-4 ${className}`}>
       {children}
     </header>
   );
