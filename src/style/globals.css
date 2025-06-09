@@ -62,20 +62,20 @@
   --border: #949191;
 }
 
-.chat-scroll::-webkit-scrollbar {
+.scroll::-webkit-scrollbar {
   width: 6px;
 }
 
-.chat-scroll::-webkit-scrollbar-track {
+.scroll::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.chat-scroll::-webkit-scrollbar-thumb {
+.scroll::-webkit-scrollbar-thumb {
   background-color: rgba(100, 116, 139, 0.4);
   border-radius: 10px;
 }
 
-.chat-scroll {
+.scroll {
   scrollbar-width: thin;
   scrollbar-color: rgba(100, 116, 139, 0.4) transparent;
 }
