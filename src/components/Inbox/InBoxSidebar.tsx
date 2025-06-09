@@ -2,7 +2,7 @@ import InboxHeader from "./InboxHeader";
 import { Icons } from "@/components/icons";
 import MyInboxCommand from "./MyInbox";
 
-export default function InBoxSidebar() {
+export default function InboxSidebar() {
 
     return (
         <div className="w-72 mx-auto h-full">
