@@ -13,7 +13,7 @@ import { Icons } from "@/components/icons"
 export default function MyInboxCommand() {
 
     return (
-        <div>
+        <div className="p-2">
             <Command className="h-full">
                 <CommandList>
                     <CommandGroup>
