@@ -8,22 +8,25 @@ export default function ChatHeader() {
   const { activeConvData } = useConversation();
   const PlatformIcon = Icons[activeConvData?.platform as keyof typeof Icons];
   if (!activeConvData?.participants) return <p>No participant found</p>;
-const iconButtons = [
-  { Icon: Icons.star, label: "Star" },
-  { Icon: Icons.ellipsis, label: "More Options" },
-  { Icon: Icons.pause, label: "Pause" },
-  { Icon: Icons.inBox, label: "Inbox" },
-];
+  const iconButtons = [
+    { Icon: Icons.star, label: "Star" },
+    { Icon: Icons.ellipsis, label: "More Options" },
+    { Icon: Icons.pause, label: "Pause" },
+    { Icon: Icons.inBox, label: "Inbox" },
+  ];
   return (
     <div className="flex items-center justify-between w-full p-4 h-16 border-b">
       <div className="flex gap-4">
-        <UserAvatar
+        <UserAvatar className="size-8"
           src={activeConvData?.participants.user.avatarUrl || ""}
           alt={activeConvData?.participants.user.name?.slice(0, 2).toUpperCase()}
         />
         <div className="flex flex-col">
           <h3 className="text-xl font-xl">{activeConvData?.participants.user.name || "User Is Unknown"}</h3>
-          <samp className="flex gap-2 items-center pl-2"><PlatformIcon className="size-5" />{activeConvData?.platform}</samp>
+          <div className="flex gap-1 items-center">
+            <PlatformIcon className="size-5" />
+            <samp className="text-base font-base">{activeConvData?.platform}</samp>
+          </div>
         </div>
       </div>
       <div className="flex gap-3">
