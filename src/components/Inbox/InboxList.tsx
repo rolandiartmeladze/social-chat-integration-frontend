@@ -25,13 +25,13 @@ export default function InboxList() {
   }, []);
   console.log(conversations);
   return (
-    <div className="w-85 mx-auto border-l">
+    <div className="w-85 border-l">
       <InboxHeader className='border-b justify-start'>
         <Icons.panelLeft />
         <samp className="text-2xl">My Inbox</samp>
       </InboxHeader>
       <SortConversations />
-      <ul className="px-3 flex flex-col gap-3">
+      <ul className="scroll px-3 flex flex-col gap-3 h-[calc(100vh-220px)] overflow-y-auto">
         {conversations.map((conv) => (
           <ConversationItem
             isActive={conv.conversationId === activeConvId}
