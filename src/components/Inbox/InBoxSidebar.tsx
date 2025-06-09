@@ -1,6 +1,6 @@
 import InboxHeader from "./InboxHeader";
 import { Icons } from "@/components/icons";
-import MyInboxCommand from "./MyInbox";
+import MyInbox from "./MyInbox";
 
 export default function InboxSidebar() {
 
@@ -14,7 +14,7 @@ export default function InboxSidebar() {
                 </div>
 
             </InboxHeader>
-            <MyInboxCommand />
+            <MyInbox />            
         </div>
     )
 }
