@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from "react";
+import { Icons } from "@/components/icons"
 import {
   Sidebar,
   SidebarContent,
@@ -16,11 +17,20 @@ import {
 } from "@/components/ui/tooltip";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@heroui/badge";
 
 export default function SidebarWrapper() {
   const [isOpen, setIsOpen] = useState(false);
+  const iconButtons = [
+    { Icon: Icons.chat1, label: "chat" },
+    { Icon: Icons.chart, label: "chart" },
+    { Icon: Icons.voice, label: "voice" },
+    { Icon: Icons.dataBase, label: "base" },
+    { Icon: Icons.check, label: "check" },
+    { Icon: Icons.folder, label: "folder" },
+  ];
   return (
-  
+
     <Sidebar
       collapsible="icon"
       data-open={isOpen}
@@ -46,9 +56,32 @@ export default function SidebarWrapper() {
       </SidebarHeader>
 
       <SidebarContent className="flex flex-col gap-4">
+        <ul className="flex flex-col gap-5 p-2 mt-4">
+          <li className="size-9 p-2 justify-center items-center cursor-pointer">
+            <Badge content="5" className="!-top-2 !-right-2.5 bg-[#A50000] flex justify-center items-center">
+              <Icons.inBox className="size-5" />
+            </Badge>
+          </li>
+
+          {iconButtons.map(({ Icon, label }, index) => (
+            <li
+              key={index}
+              className="size-9 p-2 justify-center items-center cursor-pointer"
+              title={label}
+            >
+              <Icon className="size-5" />
+            </li>
+          ))}
+        </ul>
       </SidebarContent>
 
-      <SidebarFooter className="flex flex-row items-center justify-center gap-3 p-4 rounded-tl-lg">
+      <SidebarFooter className="flex flex-col items-center justify-center gap-3 p-4 rounded-tl-lg">
+        <div className="flex justify-center items-center">
+          <Icons.settings className="size-5" />
+        </div>
+        <div className="flex justify-center items-center">
+          <Icons.bell className="size-5" />
+        </div>
         <Avatar className="m-2 size-9">
           <AvatarImage src="https://avatars.githubusercontent.com/u/13499054?v=4" />
           <AvatarFallback>RA</AvatarFallback>
