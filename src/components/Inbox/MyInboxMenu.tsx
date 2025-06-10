@@ -11,7 +11,7 @@ export default function InboxMenu() {
             count: 4,
         },
         { icon: <Icons.users />, label: "All", count: 5 },
-        { icon: <Icons.clock />, label: "Unassigned", count: 4 },
+        { icon: <Icons.unassigned />, label: "Unassigned", count: 4 },
         { icon: <Icons.mention />, label: "Mentions", count: 0 },
         { icon: <Icons.pencil />, label: "My Outbox", count: 0 },
         { icon: <Icons.check />, label: "All Resolved", count: 4 },
