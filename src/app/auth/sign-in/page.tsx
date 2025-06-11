@@ -3,12 +3,11 @@ import GoogleButton from 'react-google-button';
 import { Button } from '@/components/ui/button';
 
 export default function SignIn() {
-    const BackendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
     const handleGoogleLogin = () => {
-    window.location.href = `${BackendUrl}/auth/google`;
+    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google`;
   };
       const handleLogOut = () => {
-    window.location.href = `${BackendUrl}/auth/logout`;
+    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/logout`;
   };
 
 
