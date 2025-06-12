@@ -93,7 +93,7 @@ export default function SidebarWrapper() {
           <Icons.bell className="size-5" />
         </div>
         <Avatar className="m-2 size-9">
-          <AvatarImage src={user?.photos?[0].value} />
+          <AvatarImage src={user?.photos?.[0]?.value} />
           <AvatarFallback>RA</AvatarFallback>
         </Avatar>
         {isOpen && (
