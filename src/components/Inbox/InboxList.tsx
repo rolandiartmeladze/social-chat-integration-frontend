@@ -23,7 +23,7 @@ useEffect(() => {
       }
       if (ConvList.length > 0) {
         setConversations(ConvList);
-        setActiveConvId(ConvList[0].conversationId);
+        setActiveConvId(ConvList[1].conversationId);
       }
     } catch (error) {
       console.error("Error loading conversations:", error);
