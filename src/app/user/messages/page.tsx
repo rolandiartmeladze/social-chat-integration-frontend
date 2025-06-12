@@ -3,8 +3,8 @@ import MainLayout from "@/components/Layout/MainLayout";
 
 export default function MessagesPage() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <main>
       <MainLayout />
-    </div>
+    </main>
   );
 }
