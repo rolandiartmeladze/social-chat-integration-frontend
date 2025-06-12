@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useState } from "react";
 import { OpenConversation } from "@/components/Inbox/OpenConversation";
 import { Conversation } from "@/models/conversation.model";
+import { useEffect } from "react";
 
 interface ConversationContextType {
   activeConvId: string | null;
@@ -16,11 +17,23 @@ export const ConversationProvider = ({ children }: { children: React.ReactNode }
   const [activeConvId, setActiveConvId] = useState<string | null>(null);
   const [activeConvData, setActiveConvData] = useState<Conversation | null>(null);
 
-  const handleSetActiveConvId = async (id: string) => {
+  const handleSetActiveConvId = (id: string) => {
     setActiveConvId(id);
-    const response = await OpenConversation({ activeConvId: id });
-    setActiveConvData(response?.data?.conversation);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!activeConvId) return;
+      try {
+        const response = await OpenConversation({ activeConvId });
+        setActiveConvData(response?.data?.conversation);
+      } catch (err) {
+        console.error("Failed to fetch conversation", err);
+      }
+    };
+
+    fetchData();
+  }, [activeConvId]);
 
   return (
     <ConversationContext.Provider

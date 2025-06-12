@@ -13,16 +13,25 @@ export default function InboxList() {
   const [conversations, setConversations] = useState<Conv[]>([]);
   const { setActiveConvId, activeConvId } = useConversation();
 
-  useEffect(() => {
-    const loadConversations = async () => {
+useEffect(() => {
+  const loadConversations = async () => {
+    try {
       const ConvList = await FetchConversations();
-      if (ConvList && ConvList.length > 0) {
+      if (!Array.isArray(ConvList)) {
+        console.error("Invalid conversation list:", ConvList);
+        return;
+      }
+      if (ConvList.length > 0) {
         setConversations(ConvList);
         setActiveConvId(ConvList[0].conversationId);
       }
-    };
-    loadConversations();
-  }, []);
+    } catch (error) {
+      console.error("Error loading conversations:", error);
+    }
+  };
+
+  loadConversations();
+}, []);
   console.log(conversations);
   return (
     <div className="w-85 border-l">
