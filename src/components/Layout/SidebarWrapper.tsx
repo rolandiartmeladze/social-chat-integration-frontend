@@ -18,8 +18,11 @@ import {
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@heroui/badge";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function SidebarWrapper() {
+  const { user } =  useAuth();
+  console.log(user);
   const [isOpen, setIsOpen] = useState(false);
   const iconButtons = [
     { Icon: Icons.chat1, label: "chat" },
@@ -89,7 +92,7 @@ export default function SidebarWrapper() {
         {isOpen && (
           <div className="flex flex-col whitespace-nowrap overflow-hidden">
             <span className="text-sm font-semibold text-sidebar-primary-foreground">
-              Roland Artmeladze
+              {user?.displayName}
             </span>
             <span className="text-xs text-sidebar-primary-foreground opacity-80">
               Full Stack Developer
