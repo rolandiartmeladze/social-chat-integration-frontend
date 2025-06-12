@@ -10,7 +10,7 @@ export function useAuth() {
 
   useEffect(() => {
     axios
-      .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/protected`, {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/protected`, {
         withCredentials: true,
       })
       .then((res) => setUser(res.data.user))
