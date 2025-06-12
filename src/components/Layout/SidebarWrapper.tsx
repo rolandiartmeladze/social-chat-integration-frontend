@@ -20,9 +20,15 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@heroui/badge";
 import { useAuth } from "@/hooks/useAuth";
 
+import { useEffect } from "react";
+
 export default function SidebarWrapper() {
-  const { user } =  useAuth();
-  console.log(user);
+  const { user } = useAuth();
+
+  useEffect(() => {
+    console.log("Authenticated user:", user);
+  }, [user]); 
+  
   const [isOpen, setIsOpen] = useState(false);
   const iconButtons = [
     { Icon: Icons.chat1, label: "chat" },
