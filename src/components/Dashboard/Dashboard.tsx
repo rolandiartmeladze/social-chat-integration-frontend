@@ -1,57 +1,45 @@
 "use client";
 
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/app/auth/useAuth/useAuth";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export default function Dashboard() {
   const { user } = useAuth();
+  const router = useRouter();
 
   const goToMessages = () => {
-    window.location.href = "/user/messages";
+    router.push("/user/messages");
   };
+
   const logout = () => {
-    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/logout`;
+    router.push(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/logout`);
   };
 
   return (
-    <div
-      className="min-h-screen flex flex-col justify-center items-center px-4"
-      style={{
-        backgroundColor: "var(--background)",
-        color: "var(--foreground)",
-      }}
-    >
-      <div className="text-center max-w-xl">
-        <h1 className="text-4xl font-bold mb-4">
-          Welcome, {user?.displayName || "User"}
+    <div className="min-h-screen flex items-center justify-center bg-background px-4">
+      <div className="max-w-xl text-center space-y-6 p-8 rounded-2xl shadow-xl border border-border bg-card">
+        <h1 className="text-4xl font-bold text-foreground">
+          მოგესალმები, {user?.displayName || "მომხმარებელო"} 👋
         </h1>
 
-        <p className="mb-8 text-lg text-[var(--muted-foreground)]">
+        <p className="text-lg text-muted-foreground leading-relaxed">
           აქ შეგიძლიათ გადახვიდეთ თქვენს მესიჯებზე და მართოთ თქვენი კომუნიკაცია ერთ სივრცეში.
         </p>
 
-        <Button
-          size="lg"
-          style={{
-            backgroundColor: "var(--primary)",
-            color: "var(--foreground)",
-            border: "1px solid var(--border)",
-          }}
-          onClick={goToMessages}
-        >
-          გადადი მესიჯებზე
-        </Button>
-        <Button
-          size="lg"
-          style={{
-            backgroundColor: "var(--primary)",
-            color: "var(--foreground)",
-            border: "1px solid var(--border)",
-          }}
-          onClick={logout}
-        >
-          სისტემიდან გამოსვლა
-        </Button>
+        <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+          <Button onClick={goToMessages} size="lg">
+            📩 გადადი მესიჯებზე
+          </Button>
+          <Button
+            onClick={logout}
+            size="lg"
+            variant="outline"
+            className="border-muted-foreground text-muted-foreground hover:text-foreground"
+          >
+            🚪 გამოსვლა
+          </Button>
+        </div>
       </div>
     </div>
   );
