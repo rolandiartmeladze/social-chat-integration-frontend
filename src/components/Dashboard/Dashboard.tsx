@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
 export default function Dashboard() {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const router = useRouter();
 
   const goToMessages = () => {
@@ -16,11 +16,27 @@ export default function Dashboard() {
     router.push(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/logout`);
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen flex justify-center items-center bg-background text-muted-foreground text-lg">
+        იტვირთება მომხმარებელი...
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="min-h-screen flex justify-center items-center bg-background text-muted-foreground text-lg">
+        მომხმარებელი არ არის ავტორიზებული.
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
       <div className="max-w-xl text-center space-y-6 p-8 rounded-2xl shadow-xl border border-border bg-card">
         <h1 className="text-4xl font-bold text-foreground">
-          მოგესალმები, {user?.displayName || "მომხმარებელო"} 👋
+          მოგესალმები, {user.displayName || "მომხმარებელო"} 👋
         </h1>
 
         <p className="text-lg text-muted-foreground leading-relaxed">
