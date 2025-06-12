@@ -8,7 +8,7 @@ export default function Home() {
   };
 
   const Messages = () => {
-    window.location.href = `/auth/sign-in`;
+    window.location.href = `/user/messages`;
   };
 
   const {user} = useAuth();
