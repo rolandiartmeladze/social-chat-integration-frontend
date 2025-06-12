@@ -18,7 +18,7 @@ import {
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@heroui/badge";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/app/auth/useAuth/useAuth";
 
 import { useEffect } from "react";
 
@@ -29,6 +29,7 @@ export default function SidebarWrapper() {
     console.log("Authenticated user:", user);
   }, [user]); 
   
+  console.log(user?.photos)
   const [isOpen, setIsOpen] = useState(false);
   const iconButtons = [
     { Icon: Icons.chat1, label: "chat" },
@@ -92,7 +93,7 @@ export default function SidebarWrapper() {
           <Icons.bell className="size-5" />
         </div>
         <Avatar className="m-2 size-9">
-          <AvatarImage src="https://avatars.githubusercontent.com/u/13499054?v=4" />
+          <AvatarImage src={user?.photos?[0].value} />
           <AvatarFallback>RA</AvatarFallback>
         </Avatar>
         {isOpen && (

@@ -1,15 +1,9 @@
 "use client";
 import { createContext, useEffect, useState } from "react";
-
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-  avatar?: string;
-}
+import { GoogleProfile } from "@/types/googleAuthUser";
 
 interface AuthContextType {
-  user: User | null;
+  user: GoogleProfile | null;
   loading: boolean;
   isAuthenticated: boolean;
   refreshUser: () => Promise<void>;
@@ -18,7 +12,7 @@ interface AuthContextType {
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<GoogleProfile | null>(null);
   const [loading, setLoading] = useState(true);
 
   const fetchUser = async () => {
