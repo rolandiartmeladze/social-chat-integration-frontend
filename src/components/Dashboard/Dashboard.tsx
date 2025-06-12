@@ -12,21 +12,33 @@ export default function Dashboard() {
 
   return (
     <div
-      className="min-h-screen flex flex-col justify-center items-center text-white px-4"
+      className="min-h-screen flex flex-col justify-center items-center px-4"
       style={{
-        background:
-          "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        backgroundColor: "var(--background)",
+        color: "var(--foreground)",
       }}
     >
-      <h1 className="text-4xl font-bold mb-4 drop-shadow-lg">
-        Welcome, {user?.displayName || "User"}
-      </h1>
-      <p className="mb-8 max-w-md text-center text-lg drop-shadow-md">
-        აქ შეგიძლიათ გადახვიდეთ თქვენს მესიჯებზე და მართოთ თქვენი კომუნიკაცია.
-      </p>
-      <Button size="lg" variant="outline" onClick={goToMessages}>
-        Go to Messages
-      </Button>
+      <div className="text-center max-w-xl">
+        <h1 className="text-4xl font-bold mb-4">
+          Welcome, {user?.displayName || "User"}
+        </h1>
+
+        <p className="mb-8 text-lg text-[var(--muted-foreground)]">
+          აქ შეგიძლიათ გადახვიდეთ თქვენს მესიჯებზე და მართოთ თქვენი კომუნიკაცია ერთ სივრცეში.
+        </p>
+
+        <Button
+          size="lg"
+          style={{
+            backgroundColor: "var(--primary)",
+            color: "var(--foreground)",
+            border: "1px solid var(--border)",
+          }}
+          onClick={goToMessages}
+        >
+          გადადი მესიჯებზე
+        </Button>
+      </div>
     </div>
   );
 }
