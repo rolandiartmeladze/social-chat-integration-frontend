@@ -3,10 +3,17 @@
 import { useAuth } from "@/app/auth/useAuth/useAuth";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Dashboard() {
   const { user, loading } = useAuth();
   const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && user) {
+      router.push("/user/messages");
+    }
+  }, [user, loading, router]);
 
   const goToMessages = () => {
     router.push("/user/messages");
@@ -36,7 +43,7 @@ export default function Dashboard() {
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
       <div className="max-w-xl text-center space-y-6 p-8 rounded-2xl shadow-xl border border-border bg-card">
         <h1 className="text-4xl font-bold text-foreground">
-          მოგესალმები, {user.displayName || "მომხმარებელო"} 👋
+          მოგესალმები, {user?.displayName || "მომხმარებელო"} 👋
         </h1>
 
         <p className="text-lg text-muted-foreground leading-relaxed">
