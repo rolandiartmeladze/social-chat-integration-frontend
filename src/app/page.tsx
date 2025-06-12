@@ -1,37 +1,28 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/app/auth/useAuth/useAuth";
 import  Dashboard  from "@/components/Dashboard/Dashboard"
+import Topbar from "@/components/Layout/Topbar";
+import AuthshShall from "@/app/auth/sign-in/page"
 export default function Home() {
-  const SignIn = () => {
-    window.location.href = `/auth/sign-in`;
-  };
 
 
   const { user } = useAuth();
-
+console.log(user?.name)
   return (
-    <main className="flex flex-col h-screen justify-center items-center px-4 text-center bg-gray-50">
+    <div className="flex flex-col h-screen justify-start items-center px-4 text-center bg-background ">
       {!user ? (
         <>
-          <div className="max-w-xl mb-8">
-            <h1 className="text-3xl font-bold mb-4 text-gray-800">
-              მოგესალმებით ჩვენს პლატფორმაზე
-            </h1>
-            <p className="text-gray-600 text-lg">
-              აქ შეგიძლიათ დაამატოთ თქვენი ბიზნეს მესენჯერი პლატფორმები და მიიღოთ, გაგზავნოთ შეტყობინებები ერთი სივრციდან რეალურ დროში.
-            </p>
+          <div className="w-full flex flex-col justify-start">
+           <Topbar />
           </div>
-          <Button variant="default" size="lg" onClick={SignIn}>
-            Google-ით ავტორიზაცია
-          </Button>
+          <AuthshShall />
         </>
       ) : (
         <>
           <Dashboard /> 
         </>
       )}
-    </main>
+    </div>
   );
 }
