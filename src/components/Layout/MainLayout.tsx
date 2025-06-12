@@ -1,3 +1,5 @@
+"use client";
+
 import SidebarWrapper from "@/components/Layout/SidebarWrapper";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import Topbar from "@/components/Layout/Topbar";
