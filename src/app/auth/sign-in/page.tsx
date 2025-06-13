@@ -8,7 +8,7 @@ export default function AuthShell() {
   };
 
   return (
-      <div className="bg-background text-foreground rounded-2xl shadow-xl p-10 max-w-md w-full flex flex-col items-center text-center space-y-6">
+      <div className="bg-secondary-foreground text-foreground rounded-2xl shadow-xl p-10 max-w-md w-full flex flex-col items-center text-center space-y-6">
         <Image
           src={logo}
           alt="Logo"
