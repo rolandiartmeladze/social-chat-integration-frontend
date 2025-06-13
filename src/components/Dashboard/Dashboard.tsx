@@ -11,7 +11,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (!loading && user) {
-      router.push("/user/messages");
+      console.log(user);
     }
   }, [user, loading, router]);
 
