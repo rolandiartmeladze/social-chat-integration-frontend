@@ -1,8 +1,14 @@
-export const DetailsConfig = {
+"use client";
+import { useAuth } from "@/app/auth/useAuth/useAuth";
+
+export function useDetailsConfig() {
+  const { user } = useAuth();
+
+  return {
   General: [
     { label: "Status", icon: "progress", result: "In Progress" },
     { label: "Ticket/Conversation ID", icon: "ticket", result: "TG1789035" },
-    { label: "Assignee", icon: "userAvatar", result: "Giorgi Vashakidze" },
+    { label: "Assignee", icon: "userAvatar", result: user?.displayName },
     { label: "Team Inbox", icon: "unassigned", result: "Unassigned" },
   ],
   Contact: [
@@ -20,4 +26,5 @@ export const DetailsConfig = {
     { label: "Last Login", icon: "clock", result: "Today, 11:00 AM" },
     { label: "Status", icon: "active", result: "Active" },
   ],
+}
 };

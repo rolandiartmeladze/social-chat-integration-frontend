@@ -5,16 +5,18 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Icons } from "../icons";
-import { DetailsConfig } from "@/types/Details";
+import { useDetailsConfig } from "@/types/Details";
 
 export default function DetailsSection() {
+  const config = useDetailsConfig();
+
   return (
     <div className="px-3 scroll h-[calc(100vh-200px)] overflow-y-auto ">
       <Accordion
         type="multiple"
         defaultValue={["general", "contact", "device"]}
       >
-        {Object.entries(DetailsConfig).map(([section, items]) => {
+        {Object.entries(config).map(([section, items]) => {
           const iconMap: Record<string, React.ReactNode> = {
             General: <Icons.general />,
             Contact: <Icons.info />,
