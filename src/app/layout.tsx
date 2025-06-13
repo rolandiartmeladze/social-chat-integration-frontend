@@ -34,7 +34,7 @@ export default function RootLayout({
           <SidebarProvider>
             <AuthProvider>
               <SidebarWrapper />
-              <div className="flex flex-col relative w-full h-full">
+              <div className="flex flex-col relative w-full h-full pb-2">
                 <Topbar />
                 <ConversationProvider>
                   <div className="flex w-full h-full bg-secondary rounded-2xl px-2 mx-2 justify-center items-center">
