@@ -7,7 +7,7 @@ import { Icons } from "@/components/icons";
 export default function ChatHeader() {
   const { activeConvData } = useConversation();
   const PlatformIcon = Icons[activeConvData?.platform as keyof typeof Icons];
-  if (!activeConvData?.participants) return <p>No participant found</p>;
+  if (!activeConvData?.participants) return <div className="w-96 h-full"></div>;
   const iconButtons = [
     { Icon: Icons.star, label: "Star" },
     { Icon: Icons.ellipsis, label: "More Options" },
