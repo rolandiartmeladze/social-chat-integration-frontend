@@ -35,8 +35,7 @@ export default function Dashboard() {
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
       <div className="max-w-xl text-center space-y-6 p-8 rounded-2xl shadow-xl border border-border bg-card">
         <h1 className="text-4xl font-bold text-foreground">
-          მოგესალმები, {user.displayName || "მომხმარებელო"} 👋
-        </h1>
+          მოგესალმები, {user?.displayName || user?._json?.name || "მომხმარებელო"} 👋        </h1>
 
         <p className="text-lg text-muted-foreground leading-relaxed">
           აქ შეგიძლიათ გადახვიდეთ თქვენს მესიჯებზე და მართოთ თქვენი კომუნიკაცია ერთ სივრცეში.
