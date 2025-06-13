@@ -23,13 +23,12 @@ import { useAuth } from "@/app/auth/useAuth/useAuth";
 import { useEffect } from "react";
 
 export default function SidebarWrapper() {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
 
   useEffect(() => {
     console.log("Authenticated user:", user);
   }, [user]); 
   
-  console.log(user?.photos)
   const [isOpen, setIsOpen] = useState(false);
   const iconButtons = [
     { Icon: Icons.chat1, label: "chat" },
@@ -96,16 +95,16 @@ export default function SidebarWrapper() {
           <AvatarImage src={user?.photos?.[0]?.value} />
           <AvatarFallback>RA</AvatarFallback>
         </Avatar>
-        {isOpen && (
-          <div className="flex flex-col whitespace-nowrap overflow-hidden">
-            <span className="text-sm font-semibold text-sidebar-primary-foreground">
-              {user?.displayName}
-            </span>
-            <span className="text-xs text-sidebar-primary-foreground opacity-80">
-              Full Stack Developer
-            </span>
-          </div>
-        )}
+{!loading && user && isOpen && (
+  <div className="flex flex-col whitespace-nowrap overflow-hidden">
+    <span className="text-sm font-semibold text-sidebar-primary-foreground">
+      {user.displayName}
+    </span>
+    <span className="text-xs text-sidebar-primary-foreground opacity-80">
+      Full Stack Developer
+    </span>
+  </div>
+)}
       </SidebarFooter>
     </Sidebar>
   );
