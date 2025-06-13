@@ -6,7 +6,7 @@ import TeamInboxMenu from "./TeamInboxMenu";
 export default function MyInbox() {
 
     return (
-        <div className="p-2">
+        <div className="h-fit">
             <MyInboxMenu />
             <TeamInboxMenu />
         </div>
