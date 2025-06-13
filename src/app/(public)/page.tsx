@@ -12,8 +12,8 @@ export default function IndexPage() {
     if (isAuthenticated) 
       { router.push("/dashboard") } 
     else { router.push("/") }
-  }, [])
-  
+  }, [isAuthenticated])
+
   return (
     <div>
       <AuthSAuthShell />
