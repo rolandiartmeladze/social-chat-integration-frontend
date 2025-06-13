@@ -12,9 +12,10 @@ export default function InboxSidebar() {
                     <samp className="bg-[#515151] flex items-center justify-center size-9 rounded-full p-2"><Icons.search className="size-4" /></samp>
                     <samp className="bg-[#515151] flex items-center justify-center size-9 rounded-full p-2"><Icons.add className="size-4" /></samp>
                 </div>
-
             </InboxHeader>
-            <MyInbox />            
+            <div className="scroll h-[calc(100vh-200px)] overflow-y-auto">
+                <MyInbox />
+            </div>
         </div>
     )
 }
