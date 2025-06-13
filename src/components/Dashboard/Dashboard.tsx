@@ -11,23 +11,31 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (!loading && user) {
-      console.log(user);
+      console.log("ავტორიზებული:", user);
     }
-  }, [user, loading, router]);
+  }, [user, loading]);
 
-  const goToMessages = () => {
-    router.push("/user/messages");
-  };
+  if (loading) {
+    return (
+      <div className="min-h-screen flex justify-center items-center bg-background text-muted-foreground text-lg">
+        იტვირთება...
+      </div>
+    );
+  }
 
-  const logout = () => {
-    router.push(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/logout`);
-  };
-  
+  if (!user) {
+    return (
+      <div className="min-h-screen flex justify-center items-center bg-background text-muted-foreground text-lg">
+        მომხმარებელი არ არის ავტორიზებული.
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
       <div className="max-w-xl text-center space-y-6 p-8 rounded-2xl shadow-xl border border-border bg-card">
         <h1 className="text-4xl font-bold text-foreground">
-          მოგესალმები, {user?.displayName || "მომხმარებელო"} 👋
+          მოგესალმები, {user.displayName || "მომხმარებელო"} 👋
         </h1>
 
         <p className="text-lg text-muted-foreground leading-relaxed">
@@ -35,11 +43,13 @@ export default function Dashboard() {
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-          <Button onClick={goToMessages} size="lg">
+          <Button onClick={() => router.push("/user/messages")} size="lg">
             📩 გადადი მესიჯებზე
           </Button>
           <Button
-            onClick={logout}
+            onClick={() =>
+              router.push(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/logout`)
+            }
             size="lg"
             variant="outline"
             className="border-muted-foreground text-muted-foreground hover:text-foreground"
