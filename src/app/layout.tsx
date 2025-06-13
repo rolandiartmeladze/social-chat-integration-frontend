@@ -30,14 +30,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div className="flex h-screen relative bg-background text-foreground overflow-hidden">
+        <div className="flex h-screen relative bg-background text-foreground overflow-hidden pb-3 pr-4">
           <SidebarProvider>
             <AuthProvider>
               <SidebarWrapper />
               <div className="flex flex-col relative w-full h-full">
                 <Topbar />
                 <ConversationProvider>
-                  <div className="flex w-full h-full bg-secondary rounded-2xl p-2 m-2">
+                  <div className="flex w-full h-full bg-secondary rounded-2xl p-2 m-2 justify-center items-center">
                     {children}
                   </div>
                 </ConversationProvider>
