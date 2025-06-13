@@ -11,6 +11,8 @@ interface ConversationContextType {
   activeConvData: Conversation | null;
   allConversations: Conv[];
   refreshConversations: () => Promise<void>;
+  isFetchingAllConversations: boolean;
+  isFetchingActiveConversation: boolean;
 }
 
 const ConversationContext = createContext<ConversationContextType | undefined>(undefined);
@@ -20,13 +22,23 @@ export const ConversationProvider = ({ children }: { children: React.ReactNode }
   const [activeConvData, setActiveConvData] = useState<Conversation | null>(null);
   const [allConversations, setAllConversations] = useState<Conv[]>([]);
 
+  const [isFetchingAllConversations, setIsFetchingAllConversations] = useState<boolean>(false);
+  const [isFetchingActiveConversation, setIsFetchingActiveConversation] = useState<boolean>(false);
+
   const handleSetActiveConvId = (id: string) => {
     setActiveConvId(id);
   };
 
   const refreshConversations = async () => {
-    const data = await FetchConversations();
-    if (data) setAllConversations(data);
+    setIsFetchingAllConversations(true);
+    try {
+      const data = await FetchConversations();
+      if (data) setAllConversations(data);
+    } catch (err) {
+      console.error("Error fetching conversations", err);
+    } finally {
+      setIsFetchingAllConversations(false);
+    }
   };
 
   useEffect(() => {
@@ -36,11 +48,14 @@ export const ConversationProvider = ({ children }: { children: React.ReactNode }
   useEffect(() => {
     const fetchData = async () => {
       if (!activeConvId) return;
+      setIsFetchingActiveConversation(true);
       try {
         const response = await OpenConversation({ activeConvId });
         setActiveConvData(response?.data?.conversation);
       } catch (err) {
         console.error("Failed to fetch conversation", err);
+      } finally {
+        setIsFetchingActiveConversation(false);
       }
     };
 
@@ -55,6 +70,8 @@ export const ConversationProvider = ({ children }: { children: React.ReactNode }
         activeConvData,
         allConversations,
         refreshConversations,
+        isFetchingAllConversations,
+        isFetchingActiveConversation,
       }}
     >
       {children}
