@@ -1,14 +1,16 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
-import { OpenConversation } from "@/components/Inbox/OpenConversation";
-import { Conversation } from "@/models/conversation.model";
-import { useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { OpenConversation } from "@/hooks/openConversation";
+import { FetchConversations } from "@/hooks/fetchConversations";
+import { Conversation, Conv } from "@/models/conversation.model";
 
 interface ConversationContextType {
   activeConvId: string | null;
   setActiveConvId: (id: string) => void;
   activeConvData: Conversation | null;
+  allConversations: Conv[];
+  refreshConversations: () => Promise<void>;
 }
 
 const ConversationContext = createContext<ConversationContextType | undefined>(undefined);
@@ -16,10 +18,20 @@ const ConversationContext = createContext<ConversationContextType | undefined>(u
 export const ConversationProvider = ({ children }: { children: React.ReactNode }) => {
   const [activeConvId, setActiveConvId] = useState<string | null>(null);
   const [activeConvData, setActiveConvData] = useState<Conversation | null>(null);
+  const [allConversations, setAllConversations] = useState<Conv[]>([]);
 
   const handleSetActiveConvId = (id: string) => {
     setActiveConvId(id);
   };
+
+  const refreshConversations = async () => {
+    const data = await FetchConversations();
+    if (data) setAllConversations(data);
+  };
+
+  useEffect(() => {
+    refreshConversations();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,13 +53,14 @@ export const ConversationProvider = ({ children }: { children: React.ReactNode }
         activeConvId,
         setActiveConvId: handleSetActiveConvId,
         activeConvData,
+        allConversations,
+        refreshConversations,
       }}
     >
       {children}
     </ConversationContext.Provider>
   );
 };
-
 
 export const useConversation = () => {
   const context = useContext(ConversationContext);
