@@ -1,10 +1,11 @@
 "use client";
-import MainLayout from "@/components/Layout/MainLayout";
+
+import MessagesLayout from "@/components/Layout/MessagesLayout";
 
 export default function MessagesPage() {
   return (
-    <main>
-      <MainLayout />
-    </main>
+    <div className="flex w-full">
+      <MessagesLayout />
+    </div>
   );
 }
