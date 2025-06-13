@@ -1,8 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { FetchConversations } from "@/hooks/fetch-conversations"
-import { Conv } from '@/models/conversation.model';
+import { useEffect } from 'react';
 import { Icons } from '../icons';
 import SortConversations from './InboxSort';
 import ConversationItem from './InboxItem';
@@ -10,29 +8,23 @@ import { useConversation } from "@/context/ConversationContext";
 import InboxHeader from './InboxHeader';
 
 export default function InboxList() {
-  const [conversations, setConversations] = useState<Conv[]>([]);
-  const { setActiveConvId, activeConvId } = useConversation();
+  const {
+    allConversations,
+    setActiveConvId,
+    activeConvId,
+    refreshConversations,
+  } = useConversation();
 
-useEffect(() => {
-  const loadConversations = async () => {
-    try {
-      const ConvList = await FetchConversations();
-      if (!Array.isArray(ConvList)) {
-        console.error("Invalid conversation list:", ConvList);
-        return;
-      }
-      if (ConvList.length > 0) {
-        setConversations(ConvList);
-        setActiveConvId(ConvList[1].conversationId);
-      }
-    } catch (error) {
-      console.error("Error loading conversations:", error);
+  useEffect(() => {
+    if (allConversations.length === 0) {
+      refreshConversations();
     }
-  };
 
-  loadConversations();
-}, []);
-  console.log(conversations);
+    if (!activeConvId && allConversations.length > 0) {
+      setActiveConvId(allConversations[0].conversationId);
+    }
+  }, [allConversations]);
+
   return (
     <div className="w-85 border-l">
       <InboxHeader className='border-b justify-start'>
@@ -41,7 +33,7 @@ useEffect(() => {
       </InboxHeader>
       <SortConversations />
       <ul className="scroll px-3 flex flex-col gap-3 h-[calc(100vh-220px)] overflow-y-auto">
-        {conversations.map((conv) => (
+        {allConversations.map((conv) => (
           <ConversationItem
             isActive={conv.conversationId === activeConvId}
             key={conv.conversationId}
