@@ -1,3 +1,5 @@
+"use client";
+
 import AuthSAuthShell from "@/app//auth/sign-in/page";
 import { useAuth } from "../auth/useAuth/useAuth";
 import { useRouter } from "next/navigation";

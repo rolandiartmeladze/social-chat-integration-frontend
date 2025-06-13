@@ -37,7 +37,7 @@ export default function RootLayout({
               <div className="flex flex-col relative w-full h-full">
                 <Topbar />
                 <ConversationProvider>
-                  <div className="flex w-full h-full rounded-2xl p-2 m-2">
+                  <div className="flex w-full h-full bg-secondary rounded-2xl p-2 m-2">
                     {children}
                   </div>
                 </ConversationProvider>
