@@ -10,8 +10,7 @@ export default function Dashboard() {
   if (!isAuthenticated) router.push("/");
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-4">
-      <div className="max-w-xl text-center space-y-6 p-8 rounded-2xl shadow-xl border border-border bg-card">
+      <div className="max-w-xl text-center space-y-6 p-8 rounded-2xl shadow-xl border border-border bg-secondary-foreground">
         <h1 className="text-4xl font-bold text-foreground">
           მოგესალმები, {user?.displayName || "მომხმარებელო"} 👋
         </h1>
@@ -36,6 +35,5 @@ export default function Dashboard() {
           </Button>
         </div>
       </div>
-    </div>
   );
 }
