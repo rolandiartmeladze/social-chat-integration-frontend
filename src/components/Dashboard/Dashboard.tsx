@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 export default function Dashboard() {
   const { user, isAuthenticated } = useAuth();
   const router = useRouter();
-  if (isAuthenticated) router.push("/");
+  if (!isAuthenticated) router.push("/");
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
