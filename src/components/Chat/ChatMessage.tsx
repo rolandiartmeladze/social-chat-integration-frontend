@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { useSocket } from "@/hooks/useSocket";
 import { useConversation } from "@/context/ConversationContext";
 import { Message } from "@/models/conversation.model";
 import { UserAvatar } from "../UserAvatar/avatar";
@@ -9,8 +11,17 @@ import { Skeleton } from "../ui/skeleton";
 
 export default function ChatMessages() {
   const { activeConvData, isFetchingActiveConversation } = useConversation();
+  const [messages, setMessages] = useState<Message[]>(activeConvData?.messages || []);
+  useSocket((newMsg) => {
+    if (newMsg.id === activeConvData?.id) {
+      setMessages((prev) => [newMsg, ...prev]);
+    }
+  });
 
- if (isFetchingActiveConversation) {
+  useEffect(() => {
+    setMessages(activeConvData?.messages || []);
+  }, [activeConvData]);
+  if (isFetchingActiveConversation) {
     return (
       <div className="scroll h-[calc(100vh-200px)] overflow-y-auto flex flex-col-reverse px-4">
         <ul className="flex flex-col-reverse gap-3 py-2">
@@ -26,14 +37,14 @@ export default function ChatMessages() {
         </ul>
       </div>
     );
-  }  
-  
+  }
+
   if (!activeConvData) return <p>No participant found</p>;
 
-    return (
+  return (
     <div className="scroll h-[calc(100vh-200px)] overflow-y-auto flex flex-col-reverse px-4" >
       <ul className="flex flex-col-reverse gap-3 py-2">
-        {activeConvData?.messages?.map((msg: Message, index: number) => (
+        {messages?.map((msg: Message, index: number) => (
           <li key={index} className={cn(
             "flex gap-2",
             msg.sender.id === activeConvData.participants.page.id
@@ -55,9 +66,9 @@ export default function ChatMessages() {
                 ? "rounded-tr-none items-end bg-[#4E4E4E]"
                 : "rounded-tl-none items-start bg-muted/30"
             )}><p>{msg.text}</p> <samp className="text-secondary-foreground">{getTimeAgo(msg.timestamp)}</samp>
-</div>
+            </div>
           </li>
         ))}
       </ul>
-</div>  );
+    </div>);
 }
