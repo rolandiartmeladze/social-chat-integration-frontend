@@ -8,17 +8,21 @@ const socket = io(process.env.NEXT_PUBLIC_BACKEND_URL!, {
 
 export function useSocket(onNewMessage: (msg: Message) => void) {
   useEffect(() => {
-    socket.on('connect', () => {
-      console.log('Connected to socket.io');
+    socket.on("connect", () => {
+      console.log("🟢 Connected to socket.io");
     });
 
-    socket.on('new_message', (message: Message) => {
-      console.log('📩 New message received:', message);
+    socket.on("connect_error", (err) => {
+      console.error("❌ Connection error:", err);
+    });
+
+    socket.on("new_message", (message: Message) => {
+      console.log("📩 New message received:", message);
       onNewMessage(message);
     });
 
     return () => {
-      socket.off('new_message');
+      socket.off("new_message");
       socket.disconnect();
     };
   }, [onNewMessage]);
