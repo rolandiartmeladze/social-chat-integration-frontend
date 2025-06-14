@@ -1,14 +1,19 @@
 'use client';
 
-import { useEffect } from 'react';
+
+import { useEffect, useRef } from "react";
 import { Icons } from '../icons';
 import SortConversations from './InboxSort';
 import ConversationItem from './InboxItem';
 import { useConversation } from "@/context/ConversationContext";
 import InboxHeader from './InboxHeader';
 import { Skeleton } from "@/components/ui/skeleton"
+import { io, Socket } from "socket.io-client";
 
 export default function InboxList() {
+
+  const socketRef = useRef<Socket | null>(null);
+
   const {
     allConversations,
     setActiveConvId,
@@ -26,6 +31,26 @@ export default function InboxList() {
       setActiveConvId(allConversations[0].conversationId);
     }
   }, [allConversations]);
+
+  useEffect(() => {
+    const socket = io(process.env.NEXT_PUBLIC_BACKEND_URL!, {
+      withCredentials: true,
+    });
+    socketRef.current = socket;
+    socket.on("connect", () => {
+      console.log("✅ Connected to socket.io:", socket.id);
+    });
+    socket.on("new_message", (msg) => {
+      console.log("📩 New message received:", msg);
+      refreshConversations();
+    });
+    socket.on("connect_error", (err) => {
+      console.error("❌ Socket error:", err.message);
+    });
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
 
   return (
     <div className="w-85 border-l">
@@ -55,6 +80,7 @@ export default function InboxList() {
             />
           ))}
       </ul>
+
     </div>
   );
 }
