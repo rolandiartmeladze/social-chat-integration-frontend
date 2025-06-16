@@ -12,7 +12,7 @@ export default function ConversationItem({ conv, onClick, isActive }: Conversati
   const PlatformIcon = Icons[conv.platform as keyof typeof Icons];
   return (
 <li
-  key={conv.conversationId}
+  key={conv.id}
   className={`flex items-center justify-between gap-4 p-3 border-b transition-all cursor-pointer
     ${isActive ? "bg-accent border rounded-lg" : "hover:bg-accent"}`}
   onClick={onClick}
@@ -36,7 +36,7 @@ export default function ConversationItem({ conv, onClick, isActive }: Conversati
         {conv?.participants?.user?.name}
       </h3>
       <p className="text-sm text-muted-foreground truncate">
-        {conv?.messages[0]?.text?.substr(0, 40) || "No messages yet."}
+        {conv?.lastMessage?.text?.substr(0, 40) || "No messages yet."}
       </p>
     </div>
   </div>
