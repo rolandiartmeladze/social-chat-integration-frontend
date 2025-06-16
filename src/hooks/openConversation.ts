@@ -7,7 +7,7 @@ export async function OpenConversation({ activeConvId }: { activeConvId: string 
     throw new Error("Backend URL is not defined");
   }
 
-  const response = await fetch(`${Backend_Url}/messenger/conversation/${activeConvId}`, {
+  const response = await fetch(`${Backend_Url}/conversations/${activeConvId}/messages`, {
     credentials: "include",
   });
 
