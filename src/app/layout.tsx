@@ -1,14 +1,12 @@
-"use client"; 
-
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/style/globals.css";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import SidebarWrapper from "@/components/SidebarWrapper/SidebarWrapper";
 import { AuthProvider } from "./auth/AuthProvider/AuthProvider";
-import { ConversationProvider } from "@/context/ConversationContext"
+import { ConversationProvider } from "@/context/ConversationContext";
 import Topbar from "@/components/Header/Header";
-import { useSocket } from "@/hooks/useSocket";
+import SocketWrapper from "@/components/SocketWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,9 +28,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
-  useSocket();
-
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
@@ -43,6 +38,7 @@ export default function RootLayout({
               <div className="flex flex-col relative w-full h-full p-2">
                 <Topbar />
                 <ConversationProvider>
+                  <SocketWrapper /> {/* ✅ აქ client-only სოკეტი */}
                   <div className="flex w-full h-full bg-secondary rounded-2xl px-2 mx-2 justify-center items-center">
                     {children}
                   </div>
