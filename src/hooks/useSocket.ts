@@ -13,6 +13,7 @@ export function useSocket() {
     if (!socket) {
       socket = io(process.env.NEXT_PUBLIC_BACKEND_URL!, {
         withCredentials: true,
+        transports: ["websocket"],
       });
 
       socket.on("connect", () => {
@@ -39,28 +40,5 @@ export function useSocket() {
       }
     };
   }, [activeConvId]);
-
-  useEffect(() => {
-  const socket = io("https://false-vintage-flea.glitch.me", {
-    withCredentials: true,
-    transports: ["websocket"],
-  });
-
-  socket.on("connect", () => {
-    console.log("✅ Connected to socket.io", socket.id);
-  });
-
-  socket.on("disconnect", () => {
-    console.log("❌ Disconnected from socket.io");
-  });
-
-  socket.on("conversationUpdated", (data) => {
-    console.log("📬 Conversation updated:", data);
-  });
-
-  return () => {
-    socket.disconnect();
-  };
-}, []);
 
 }
