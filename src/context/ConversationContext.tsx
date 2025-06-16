@@ -11,6 +11,7 @@ interface ConversationContextType {
   activeConvData: Conversation | null;
   allConversations: Conv[];
   refreshConversations: () => Promise<void>;
+  refreshMessages: (convId: string) => Promise<void>;
   isFetchingAllConversations: boolean;
   isFetchingActiveConversation: boolean;
 }
@@ -41,6 +42,14 @@ export const ConversationProvider = ({ children }: { children: React.ReactNode }
     }
   };
 
+const refreshMessages = async (convId: string) => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/conversations/${convId}/messages`, {
+    credentials: "include",
+  });
+  const data = await res.json();
+  setActiveConvData(data);
+};
+
   useEffect(() => {
     refreshConversations();
   }, []);
@@ -51,7 +60,8 @@ export const ConversationProvider = ({ children }: { children: React.ReactNode }
       setIsFetchingActiveConversation(true);
       try {
         const response = await OpenConversation({ activeConvId });
-        setActiveConvData(response?.data?.conversation);
+        setActiveConvData(response?.data as Conversation);
+        console.log(response.data);
       } catch (err) {
         console.error("Failed to fetch conversation", err);
       } finally {
@@ -70,6 +80,7 @@ export const ConversationProvider = ({ children }: { children: React.ReactNode }
         activeConvData,
         allConversations,
         refreshConversations,
+        refreshMessages,
         isFetchingAllConversations,
         isFetchingActiveConversation,
       }}
