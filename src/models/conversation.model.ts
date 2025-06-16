@@ -24,12 +24,24 @@ export interface Conversation {
 }
 
 export interface Conv {
-  conversationId: string;
-  participants:Participants;
+  id: string;
+  customId: string;
+  participants: Participants;
   platform: string;
-  messages: Message[];
+  lastMessage: {
+    _id: string;
+    sender: {
+      id: string;
+      name: string;
+      avatarUrl?: string;
+    };
+    text: string;
+    timestamp: string;
+  };
   lastUpdated: string;
+  unreadCount?: number;
 }
+
 
 export interface Participants {
   user: User;
