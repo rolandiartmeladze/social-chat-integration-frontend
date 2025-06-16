@@ -1,4 +1,5 @@
-// useSocket.ts
+"use client";
+
 import { useEffect } from "react";
 import { io, Socket } from "socket.io-client";
 import { useConversation } from "@/context/ConversationContext";
