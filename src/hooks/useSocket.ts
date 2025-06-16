@@ -1,29 +1,29 @@
 import { useEffect } from "react";
 import { io } from "socket.io-client";
-import { Message } from "@/models/conversation.model";
+import { useConversation } from "@/context/ConversationContext";
 
-const socket = io(process.env.NEXT_PUBLIC_BACKEND_URL!, {
+const socket = io(process.env.NEXT_PUBLIC_BACKEND_URL, {
   withCredentials: true,
 });
 
-export function useSocket(onNewMessage: (msg: Message) => void) {
+export function useSocket() {
+  const { refreshConversations, activeConvId, refreshMessages } = useConversation();
+
   useEffect(() => {
     socket.on("connect", () => {
-      console.log("🟢 Connected to socket.io:", socket.id);
+      console.log("✅ Connected to socket:", socket.id);
     });
 
-    socket.on("new_message", (message: Message) => {
-      console.log("📩 New message received:", message);
-      onNewMessage(message); 
-    });
-
-    socket.on("connect_error", (err) => {
-      console.error("❌ Socket connection error:", err.message);
+    socket.on("conversationUpdated", async (data) => {
+      console.log("🔁 Conversation updated:", data);
+      await refreshConversations();
+      if (data.customId === activeConvId) {
+        await refreshMessages(data.customId);
+      }
     });
 
     return () => {
-      socket.off("new_message");
       socket.disconnect();
     };
-  }, [onNewMessage]);
+  }, [activeConvId]);
 }
