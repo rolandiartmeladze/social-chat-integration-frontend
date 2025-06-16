@@ -1,3 +1,5 @@
+"use client"; 
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/style/globals.css";
@@ -28,7 +30,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   useSocket();
+
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
