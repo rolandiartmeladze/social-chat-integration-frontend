@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSocket } from "@/hooks/useSocket";
 import { useConversation } from "@/context/ConversationContext";
 import { Message } from "@/models/conversation.model";
 import { UserAvatar } from "../UserAvatar/avatar";
@@ -12,15 +11,10 @@ import { Skeleton } from "../ui/skeleton";
 export default function ChatMessages() {
   const { activeConvData, isFetchingActiveConversation } = useConversation();
   const [messages, setMessages] = useState<Message[]>(activeConvData?.messages || []);
-  useSocket((newMsg) => {
-    if (newMsg.id === activeConvData?.id) {
-      setMessages((prev) => [newMsg, ...prev]);
-    }
-  });
-
   useEffect(() => {
     setMessages(activeConvData?.messages || []);
   }, [activeConvData]);
+
   if (isFetchingActiveConversation) {
     return (
       <div className="scroll h-[calc(100vh-200px)] overflow-y-auto flex flex-col-reverse px-4">
@@ -47,13 +41,13 @@ export default function ChatMessages() {
         {messages?.map((msg: Message, index: number) => (
           <li key={index} className={cn(
             "flex gap-2",
-            msg.sender.id === activeConvData.participants.page.id
+            msg.sender.id === activeConvData.participants.page?.id
               ? "flex-row-reverse items-end"
               : "flex-row items-start"
           )}>
             <UserAvatar className={cn(
               "size-7",
-              msg.sender.id === activeConvData.participants.page.id
+              msg.sender.id === activeConvData.participants.page?.id
                 ? "hidden" : "flex"
             )}
               src={msg.sender.avatarUrl}
@@ -62,7 +56,7 @@ export default function ChatMessages() {
 
             <div className={cn(
               "flex flex-col p-2 text-sm w-auto max-w-[75%] break-words rounded-2xl",
-              msg.sender.id === activeConvData.participants.page.id
+              msg.sender.id === activeConvData.participants.page?.id
                 ? "rounded-tr-none items-end bg-[#4E4E4E]"
                 : "rounded-tl-none items-start bg-muted/30"
             )}><p>{msg.text}</p> <samp className="text-secondary-foreground">{getTimeAgo(msg.timestamp)}</samp>
