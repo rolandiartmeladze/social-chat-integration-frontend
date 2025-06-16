@@ -6,6 +6,7 @@ import SidebarWrapper from "@/components/SidebarWrapper/SidebarWrapper";
 import { AuthProvider } from "./auth/AuthProvider/AuthProvider";
 import { ConversationProvider } from "@/context/ConversationContext"
 import Topbar from "@/components/Header/Header";
+import { useSocket } from "@/hooks/useSocket";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +28,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  useSocket();
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>

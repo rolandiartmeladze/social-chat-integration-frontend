@@ -10,8 +10,6 @@ import { useConversation } from "@/context/ConversationContext";
 import InboxHeader from './InboxHeader';
 import { Skeleton } from "@/components/ui/skeleton"
 // import { io, Socket } from "socket.io-client";
-import { useSocket } from "@/hooks/useSocket";
-
 export default function InboxList() {
 
   // const socketRef = useRef<Socket | null>(null);
@@ -34,7 +32,6 @@ export default function InboxList() {
     }
   }, [allConversations]);
 
-  useSocket();
 
   // useEffect(() => {
   //   const socket = io(process.env.NEXT_PUBLIC_BACKEND_URL!, {
