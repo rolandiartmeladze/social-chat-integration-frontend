@@ -38,7 +38,7 @@ export default function RootLayout({
               <div className="flex flex-col relative w-full h-full p-2">
                 <Topbar />
                 <ConversationProvider>
-                  <SocketWrapper /> {/* ✅ აქ client-only სოკეტი */}
+                  <SocketWrapper />
                   <div className="flex w-full h-full bg-secondary rounded-2xl px-2 mx-2 justify-center items-center">
                     {children}
                   </div>

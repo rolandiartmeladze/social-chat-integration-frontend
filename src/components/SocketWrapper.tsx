@@ -1,9 +1,7 @@
-'use client';
-
-import { useSocket } from '@/hooks/useSocket';
+"use client";
+import { useSocketEvents } from "@/hooks/useSocketEvents";
 
 export default function SocketWrapper() {
-  useSocket();
-
+  useSocketEvents();
   return null;
 }
