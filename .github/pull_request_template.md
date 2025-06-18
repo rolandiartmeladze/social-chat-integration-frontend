@@ -1,4 +1,4 @@
-# Pull Request Template for ArtOa
+# Pull Request Template for Project
 
 ## Description
 
