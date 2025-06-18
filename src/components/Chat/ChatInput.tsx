@@ -26,7 +26,7 @@ const sendMessage = async () => {
           : `${process.env.NEXT_PUBLIC_BACKEND_URL}/messenger/send`;
 
       await axios.post(url, {
-        sender: recipientId,
+        recipientId: recipientId,
         text: textMessage,
       });
 
