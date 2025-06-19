@@ -61,7 +61,6 @@ const refreshMessages = async (convId: string) => {
       try {
         const response = await OpenConversation({ activeConvId });
         setActiveConvData(response?.data as Conversation);
-        console.log(response.data);
       } catch (err) {
         console.error("Failed to fetch conversation", err);
       } finally {
