@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useEffect, useState } from "react";
 import { GoogleProfile } from "@/types/googleAuthUser";
-
+import { axiosInstance } from "@/hooks/axiosInstance";
 interface AuthContextType {
   user: GoogleProfile | null;
   loading: boolean;
@@ -18,12 +18,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const fetchUser = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/protected`, {
-        credentials: "include",
-      });
-
-      if (res.ok) {
-        const data = await res.json();
+      const res = await axiosInstance.get(`/auth/protected`);
+      if (res) {
+        const data = await res.data;
         setUser(data);
       } else {
         setUser(null);
