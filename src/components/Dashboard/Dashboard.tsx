@@ -12,7 +12,7 @@ export default function Dashboard() {
   return (
       <div className="max-w-xl text-center space-y-6 p-8 rounded-2xl shadow-xl border border-border bg-secondary-foreground">
         <h1 className="text-4xl font-bold text-foreground">
-          მოგესალმები, {user?.displayName || "მომხმარებელო"} 👋
+          მოგესალმები, {user?.name || "მომხმარებელო"} 👋
         </h1>
 
         <p className="text-lg text-muted-foreground leading-relaxed">

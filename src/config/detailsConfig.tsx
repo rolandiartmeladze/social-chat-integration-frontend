@@ -8,12 +8,12 @@ export function useDetailsConfig() {
   General: [
     { label: "Status", icon: "progress", result: "In Progress" },
     { label: "Ticket/Conversation ID", icon: "ticket", result: "TG1789035" },
-    { label: "Assignee", icon: "userAvatar", result: user?.displayName },
+    { label: "Assignee", icon: "userAvatar", result: user?.name },
     { label: "Team Inbox", icon: "unassigned", result: "Unassigned" },
   ],
   Contact: [
     { label: "Name", icon: "userAvatar", result: "Alex Chachava" },
-    { label: "E-Mail", icon: "mail", result: "user@example.com" },
+    { label: "E-Mail", icon: "mail", result: user?.email },
     { label: "Phone", icon: "phone", result: "+995 599 123 456" },
     { label: "Social Handle", icon: "mention", result: "eidtsumnemlla" },
   ],

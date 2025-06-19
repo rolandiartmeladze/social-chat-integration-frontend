@@ -92,13 +92,13 @@ export default function SidebarWrapper() {
           <Icons.bell className="size-5" />
         </div>
         <Avatar className="m-2 size-9">
-          <AvatarImage src={user?.photos?.[0]?.value} />
+          <AvatarImage src={user?.avatarUrl} />
           <AvatarFallback>RA</AvatarFallback>
         </Avatar>
 {!loading && user && isOpen && (
   <div className="flex flex-col whitespace-nowrap overflow-hidden">
     <span className="text-sm font-semibold text-sidebar-primary-foreground">
-      {user.displayName}
+      {user?.name}
     </span>
     <span className="text-xs text-sidebar-primary-foreground opacity-80">
       Full Stack Developer
