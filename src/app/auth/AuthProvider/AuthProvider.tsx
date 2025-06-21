@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const fetchUser = async () => {
     setLoading(true);
     try {
-      const res = await axiosInstance.get(`/auth/protected`);
+      const res = await axiosInstance.get(`/auth/me`);
       if (res) {
         const data = await res.data;
         setUser(data);
