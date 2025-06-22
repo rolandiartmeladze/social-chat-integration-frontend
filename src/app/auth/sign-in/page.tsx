@@ -1,10 +1,18 @@
 "use client";
-import GoogleButton from "react-google-button";
+
 import Image from "next/image";
 import logo from "@/../public/logo-1.png"
+import {
+  GoogleLoginButton,
+  FacebookLoginButton,
+} from "react-social-login-buttons";
+
 export default function AuthShell() {
-  const handleSignIn = () => {
+  const handleGoogleSignIn = () => {
     window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google`;
+  };
+  const handleFacebookSignIn = () => {
+    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/facebook`;
   };
 
   return (
@@ -18,16 +26,10 @@ export default function AuthShell() {
       />
       <h1 className="text-2xl font-semibold text-foreground">მოგესალმებით!</h1>
       <p className="text-foreground text-base">
-        სისტემაში შესასვლელად გამოიყენეთ თქვენი Google ანგარიში.
+        სისტემაში შესასვლელად გამოიყენეთ თქვენი Google ან facebook ანგარიში.
       </p>
-      <GoogleButton onClick={handleSignIn} label="შესვლა Google-ით" />
-      <button
-        onClick={() => {
-          window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/facebook`;
-        }}
-      >
-        შესვლა Facebook-ით
-      </button>
+      <GoogleLoginButton onClick={handleGoogleSignIn} className="flex !w-auto " />
+      <FacebookLoginButton onClick={handleFacebookSignIn} className="flex !w-auto " />
     </div>
   );
 }
