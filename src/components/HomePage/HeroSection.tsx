@@ -2,7 +2,7 @@ export default function HeroSection() {
   return (
     <div className="w-full text-left space-y-6">
      <h1 className="text-4xl md:text-3xl font-bold leading-tight">
-        Welcome to Cross-Platform Chat
+        Welcome to Multi-Platform Chat Application
       </h1>
       <p className="text-lg md:text-xl text-white/90">
         Connect all your messaging platforms in one place. 
