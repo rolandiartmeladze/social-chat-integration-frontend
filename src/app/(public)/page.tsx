@@ -1,9 +1,9 @@
 "use client";
 
-import AuthSAuthShell from "@/app//auth/sign-in/page";
 import { useAuth } from "../auth/useAuth/useAuth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import Home from "@/components/HomePage/HomePage";
 
 export default function IndexPage() {
   const { isAuthenticated } = useAuth();
@@ -12,11 +12,11 @@ export default function IndexPage() {
     if (isAuthenticated) 
       { router.push("/dashboard") } 
     else { router.push("/") }
-  }, [isAuthenticated])
+  }, [isAuthenticated, router])
 
   return (
-    <div>
-      <AuthSAuthShell />
+    <div className="w-full h-full flex overflow-hidden">
+      <Home />
     </div>
   );
 }

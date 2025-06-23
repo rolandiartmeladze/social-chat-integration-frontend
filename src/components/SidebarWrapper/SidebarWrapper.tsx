@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useState } from "react";
 import { Icons } from "@/components/icons"
 import {
@@ -15,20 +16,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@heroui/badge";
 import { useAuth } from "@/app/auth/useAuth/useAuth";
 
-import { useEffect } from "react";
-
 export default function SidebarWrapper() {
   const { user, loading } = useAuth();
-
-  useEffect(() => {
-    console.log("Authenticated user:", user);
-  }, [user]); 
-  
   const [isOpen, setIsOpen] = useState(false);
   const iconButtons = [
     { Icon: Icons.chat1, label: "chat" },
@@ -38,6 +31,8 @@ export default function SidebarWrapper() {
     { Icon: Icons.check, label: "check" },
     { Icon: Icons.folder, label: "folder" },
   ];
+
+  if(!user) return null;
   return (
 
     <Sidebar

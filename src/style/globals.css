@@ -83,6 +83,11 @@
   @apply border-border outline-ring/50;
 }
 
+  .bg-home {
+    background-image: url('../../public/bg1.jpg');
+    background-size: cover;
+    background-position: center;
+  }
 body {
   @apply bg-background text-foreground;
 }

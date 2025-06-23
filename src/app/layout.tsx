@@ -39,7 +39,7 @@ export default function RootLayout({
                 <Topbar />
                 <ConversationProvider>
                   <SocketWrapper />
-                  <div className="flex w-full h-full bg-secondary rounded-2xl px-2 mx-2 justify-center items-center">
+                  <div className="flex w-full h-full bg-secondary rounded-2xl justify-center items-center">
                     {children}
                   </div>
                 </ConversationProvider>
