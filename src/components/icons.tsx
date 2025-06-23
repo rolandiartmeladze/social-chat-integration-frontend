@@ -791,4 +791,28 @@ export const Icons = {
             <circle cx="12" cy="12" r="3" />
         </svg>
     ),
+    google: (props: SvgIconProps) => (
+        <svg width="800" height="800" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" {...props}>
+            <path fill="#4285F4" d="M24 9.5c3.54 0 6.36 1.36 8.31 2.86l6.19-6.19C34.14 3.37 29.48 1 24 1 14.73 1 6.89 6.73 3.59 14.21l7.21 5.6C12.3 14.05 17.72 9.5 24 9.5z" />
+            <path fill="#34A853" d="M46.28 24.42c0-1.43-.12-2.8-.34-4.13H24v7.82h12.53c-.54 2.9-2.14 5.36-4.53 7.03v5.65h7.35c4.3-3.96 6.93-9.78 6.93-16.37z" />
+            <path fill="#FBBC05" d="M10.8 28.31c-.6-1.8-.95-3.72-.95-5.73s.35-3.93.95-5.73v-5.65H3.59C2.18 15.8 1.5 19.79 1.5 24s.68 8.2 2.09 11.8l7.21-5.6z" />
+            <path fill="#EA4335" d="M24 46c5.48 0 10.14-1.8 13.52-4.9l-7.35-5.65c-2.04 1.37-4.64 2.18-7.17 2.18-6.28 0-11.7-4.55-13.2-10.59l-7.21 5.6C6.89 41.27 14.73 46 24 46z" />
+            <path fill="none" d="M0 0h48v48H0z" />
+        </svg>
+    ),
+    facebook: (props: SvgIconProps) => (
+        <svg xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            {...props}
+            className="lucide lucide-facebook-icon lucide-facebook">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+        </svg>
+    ),
 };
