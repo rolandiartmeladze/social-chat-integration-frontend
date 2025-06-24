@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import person from '@/../public/bg_persone.png';
+import SocialIcons from './SocialIcons';
 
 export default function HeroSection() {
   return (
@@ -22,7 +23,7 @@ export default function HeroSection() {
     Our multi-platform chat hub brings your Messenger, Telegram, and more together — so you can follow conversations, reply in real time, and stay in control.
   </p>
     </div>
+    <SocialIcons />
   </div>
-
 );
 }   
