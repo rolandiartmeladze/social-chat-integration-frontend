@@ -1,20 +1,28 @@
+import Image from 'next/image';
+import person from '@/../public/bg_persone.png';
+
 export default function HeroSection() {
   return (
-    <div className="w-full text-left space-y-6">
-     <h1 className="text-4xl md:text-3xl font-bold leading-tight">
-        Welcome to Multi-Platform Chat Application
-      </h1>
-      <p className="text-lg md:text-xl text-white/90">
-        Connect all your messaging platforms in one place. 
-        Manage conversations, respond in real time, and stay organized — 
-        whether it is Facebook, Telegram, or more.
-        <br /><br />
-        Our unified messenger app is currently in beta, and we are actively improving it. 
-        Join now and be part of the journey!
-      </p>
-      <button className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-200 transition">
-        Get Started
-      </button>
+<div className="flex flex-col md:flex-cols w-full h-full items-end justify-between relative bg-home overflow-hidden">
+  <div className="absolute md:w-1/2 h-[300px] left-0 md:h-full flex items-center justify-start -bottom-15">
+    <Image
+      src={person}
+      alt="Hero Illustration"
+      width={500}
+      height={500}
+      className="object-contain z-10"
+    />
+  </div>
+  <div className="flex flex-col w-3/5 items-center h-full justify-center text-center space-y-6 z-20 p-4 md:p-8">
+    <h1 className="text-4xl md:text-5xl font-bold leading-tight text-foreground">
+      All Your Chats. One Powerful Space.
+    </h1>
+    <p className="text-lg md:text-xl text-foreground">
+    Tired of switching between apps to stay in touch? <br />
+    Our multi-platform chat hub brings your Messenger, Telegram, and more together — so you can follow conversations, reply in real time, and stay in control.
+  </p>
     </div>
-  );
+  </div>
+
+);
 }   

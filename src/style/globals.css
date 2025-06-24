@@ -86,7 +86,7 @@
   .bg-home {
     background-image: url('../../public/bg1.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: left;
   }
 body {
   @apply bg-background text-foreground;
