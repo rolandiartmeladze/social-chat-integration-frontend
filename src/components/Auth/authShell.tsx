@@ -60,7 +60,7 @@ export default function AuthShell() {
           </Button>
         </form>
         <p>
-         Don't have an account? <a href="/auth/sign-up" className="text-blue-500">Sign Up</a>
+         Don’t have an account? <a href="/auth/sign-up" className="text-blue-500">Sign Up</a>
         </p>
       </div>
     </div>
