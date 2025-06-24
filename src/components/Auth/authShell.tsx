@@ -1,65 +1,67 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
+import { GoogleLoginButton, FacebookLoginButton } from "react-social-login-buttons";
+
 
 export default function AuthShell() {
-     const handleGoogleSignIn = () => {
-    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/google`;
-  };
-  const handleFacebookSignIn = () => {
-    window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/facebook`;
-  };
+  const Url = ({ provider }: { provider: string }) => window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/${provider}`;
 
   return (
-    <div className="bg-secondary p-8 rounded-lg shadow-md w-full mx-auto lg:max-w-md  space-y-6">
-      <h1 className="text-2xl font-semibold text-foreground">მოგესალმებით!</h1>
-      <p className="text-foreground text-base">
-        სისტემაში შესასვლელად გამოიყენეთ თქვენი Google ან facebook ანგარიში.
+    <div className="rounded-lg w-full mx-auto lg:max-w-xl p-6 flex gap-1 flex-col">
+      <h1 className="text-4xl font-bold text-foreground">Welcome Back</h1>
+      <p className="text-muted-foreground text-lg">
+        continue with your social account to sync your Chats.
       </p>
-      <div>
+      <div className="flex flex-col w-full">
+        <GoogleLoginButton
+          onClick={() => Url({ provider: "google" })}
+          className="!bg-white !text-black !w-auto rounded-md px-4 py-2"
+        />
+
+        <FacebookLoginButton
+          onClick={() => Url({ provider: "facebook" })}
+          className="!bg-[#3b5998] !w-auto rounded-md px-4 py-2"
+        />
+      </div>
+      <div className="space-y-2">
         <form className="space-y-4">
-          <Input
-            type="email"
-            placeholder="Email"
-            className="w-full outline-none"
-          />
-          <Input
-            type="password"
-            placeholder="Password"
-            className="w-full outline-none"
-          />
+          <div className="w-full flex flex-col space-y-1">
+            <label htmlFor="email" className="text-sm font-medium text-foreground">
+              Email Address
+            </label>
+            <Input
+              id="email"
+              type="email"
+              placeholder="your@email.com"
+              className="w-full outline-none"
+            />
+          </div>
+          <div className="w-full flex flex-col space-y-1">
+            <label htmlFor="password" className="text-sm font-medium text-foreground">
+              Password
+            </label>
+            <Input
+              id="password"
+              type="password"
+              placeholder="Your Password"
+              className="w-full outline-none"
+            />
+          </div>
+
           <Button
             type="submit"
-            variant="default"
-            className="w-full cursor-pointer bg-background"
-            >
+            size={"lg"}
+            onClick={() => Url({ provider: "manual" })}
+            className="cursor-pointer text-lg hover:bg-background"
+          >
             Sign In
           </Button>
         </form>
-      </div>
-
-      <div className="flex space-x-4">
-        <Button
-          variant="outline"
-          size="icon"
-          onClick={handleGoogleSignIn}
-          aria-label="Sign in with Google"
-          className="cursor-pointer"
-        >
-          <Icons.google className="size-6" />
-        </Button>
-
-        <Button
-          variant="outline"
-          size="icon"
-          onClick={handleFacebookSignIn}
-          aria-label="Sign in with Facebook"
-          className="cursor-pointer"
-        >
-          <Icons.facebook className="size-6" />
-        </Button>
+        <p>
+         Don't have an account? <a href="/auth/sign-up" className="text-blue-500">Sign Up</a>
+        </p>
       </div>
     </div>
   );
