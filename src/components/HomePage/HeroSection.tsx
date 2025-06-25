@@ -1,55 +1,14 @@
 "use client";
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import person_green from '@/../public/persone_green.png';
-import person_blue from '@/../public/persone_blue.png';
-import person_red from '@/../public/persone_red.png';
-import SocialIcons from './SocialIcons';
 
-const persons = [person_green, person_red, person_blue];
+import SocialIcons from './SocialIcons';
+import PersonCarousel from './PersonCarousel';
 
 export default function HeroSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [opacity, setOpacity] = useState(1);
-
-  useEffect(() => {
-    const startCycle = setTimeout(() => {
-      animateFadeOut();
-    }, 3000);
-
-    return () => clearTimeout(startCycle);
-  }, []);
-
-  const animateFadeOut = () => {
-    setOpacity(0);
-    setTimeout(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % persons.length);
-      animateFadeIn();
-    }, 2000);
-  };
-
-  const animateFadeIn = () => {
-    setOpacity(1);
-    setTimeout(() => {
-      animateFadeOut();
-    }, 3000);
-  };
   return (
     <div className="flex flex-col md:flex-cols w-full h-full items-end justify-between relative bg-home overflow-hidden">
-      <div
-        className="absolute md:w-1/2 h-[300px] left-0 md:h-full flex items-center justify-start -bottom-15 transition-opacity duration-1000 ease-in-out"
-        style={{
-          opacity: opacity,
-          transition: 'opacity 1s ease-in-out',
-        }}
-      >        <Image
-          src={persons[currentIndex]}
-          alt="Hero Illustration"
-          width={500}
-          height={500}
-          className="object-contain z-10"
-        />
-      </div>
+      
+      <PersonCarousel />
+
       <div className="flex flex-col w-3/5 items-center h-full justify-center text-center space-y-6 z-20 p-4 md:p-8">
         <h1 className="text-4xl md:text-5xl font-bold leading-tight text-foreground">
           All Your Chats. One Powerful Space.
