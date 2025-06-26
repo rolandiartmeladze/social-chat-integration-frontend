@@ -56,7 +56,7 @@ const sendMessage = async () => {
           size="sm"
           onClick={sendMessage}
         >
-          Send
+        <samp>Send</samp>
         </Button>
       </div>
     </div>
