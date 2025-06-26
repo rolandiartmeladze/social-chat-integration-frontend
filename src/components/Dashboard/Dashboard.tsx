@@ -20,10 +20,10 @@ export default function Dashboard() {
         </p>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-          <Button onClick={() => router.push("/user/messages")} size="lg">
+          <Button asChild onClick={() => router.push("/user/messages")} size="lg">
             📩 გადადი მესიჯებზე
           </Button>
-          <Button
+          <Button asChild
             onClick={() =>
               router.push(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/logout`)
             }
