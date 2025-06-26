@@ -3,6 +3,8 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import SocialLoginButtons from "./SocialLoginButtons";
+import Link from "next/link";
+
 export default function AuthShell() {
 
   const Url = ({ provider }: { provider: string }) =>
@@ -54,16 +56,16 @@ export default function AuthShell() {
           />
         </div>
 
-        <Button type="submit" size="lg" className="w-full font-semibold">
-          Sign In
+        <Button asChild type="submit" size="lg" className="w-full font-semibold cursor-pointer">
+          <Link href="/auth/sign-in">Sign In</Link>
         </Button>
       </form>
 
       <p className="text-center text-sm text-muted-foreground">
         Don’t have an account?{" "}
-        <a href="/auth/sign-up" className="text-blue-600 font-semibold hover:underline">
+        <Link href="/auth/sign-up" className="text-blue-600 font-semibold hover:underline">
           Sign Up
-        </a>
+        </Link>
       </p>
     </div>
   );
