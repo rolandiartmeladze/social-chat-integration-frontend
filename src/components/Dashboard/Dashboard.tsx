@@ -21,7 +21,7 @@ export default function Dashboard() {
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
           <Button asChild onClick={() => router.push("/user/messages")} size="lg">
-            📩 გადადი მესიჯებზე
+           <samp> 📩 გადადი მესიჯებზე </samp>
           </Button>
           <Button asChild
             onClick={() =>
@@ -31,7 +31,7 @@ export default function Dashboard() {
             variant="outline"
             className="border-muted-foreground text-muted-foreground hover:text-foreground"
           >
-            🚪 გამოსვლა
+           <samp> 🚪 გამოსვლა </samp>
           </Button>
         </div>
       </div>
