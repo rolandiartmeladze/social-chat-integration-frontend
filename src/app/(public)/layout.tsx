@@ -4,7 +4,7 @@ export default function PublicLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-secondary">
+    <div className="w-full h-full flex overflow-hidden">
       {children}
     </div>
   );
