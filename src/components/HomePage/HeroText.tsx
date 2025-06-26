@@ -6,7 +6,7 @@ export default function HeroText() {
     const isMobile = useIsMobile();
     return (
         <div className="flex flex-col w-[55%] lg:w-3/5 items-center h-full justify-center text-center z-20 p-4 md:p-8">
-            <h1 className="text-xl md:text-5xl font-bold leading-tight text-foreground">
+            <h1 className="text-xl md:text-4xl font-bold leading-tight text-foreground">
                 {!isMobile ? "All Your Chats. One Powerful Space." : "One Hub. All Your Chats."}
             </h1>
             <p className="p-2 text-base md:text-xl text-foreground">
