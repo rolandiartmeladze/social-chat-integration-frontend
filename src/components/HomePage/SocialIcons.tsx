@@ -49,7 +49,7 @@ export default function SocialIcons() {
           key={index}
           custom={index}
           animate={controls}
-          className="absolute size-13"
+          className="absolute size-8 lg:size-13"
           style={{
             top: icon.top,
             left: icon.left,
