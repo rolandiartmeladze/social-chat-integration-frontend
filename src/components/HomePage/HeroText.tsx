@@ -7,7 +7,7 @@ export default function HeroText() {
     return (
         <div className="flex gap-4 flex-col w-[55%] lg:w-3/5 items-center h-full justify-center text-center z-20 p-4 md:p-8">
             <TypingText
-                className="text-xl md:text-4xl h-10 lg:h-20 px-6 py-2 font-bold leading-tight text-foreground"
+                className="text-lg md:text-4xl h-10 lg:h-20 px-6 py-2 font-bold leading-tight text-foreground"
                 text={[
                     "All chats, one space.",
                     "Chat smarter, not harder.",
