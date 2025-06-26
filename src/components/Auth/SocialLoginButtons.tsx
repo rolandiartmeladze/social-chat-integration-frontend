@@ -13,7 +13,7 @@ export default function SocialLoginButtons({ onClick }: Props) {
     return (
         <div className="flex gap-4 md:gap-2 flex-wrap justify-center items-start">
             {providers.map(({ name, icon, bgColor, textColor = "text-white", hoverColor }) => (
-                <Button
+                <Button asChild
                     key={name}
                     onClick={() => onClick(name.toLowerCase())}
                     variant="outline"
