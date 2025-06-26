@@ -2,68 +2,69 @@
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { GoogleLoginButton, FacebookLoginButton } from "react-social-login-buttons";
-
-
+import SocialLoginButtons from "./SocialLoginButtons";
 export default function AuthShell() {
-  const Url = ({ provider }: { provider: string }) => window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/${provider}`;
+
+  const Url = ({ provider }: { provider: string }) =>
+    (window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/${provider}`);
 
   return (
-    <div className="rounded-lg w-full mx-auto lg:max-w-xl p-6 flex gap-1 flex-col">
-      <h1 className="text-4xl font-bold text-foreground">Welcome Back</h1>
-      <p className="text-muted-foreground text-lg">
-        continue with your social account to sync your Chats.
-      </p>
-      <div className="flex flex-col w-full">
-        <GoogleLoginButton
-          onClick={() => Url({ provider: "google" })}
-          className="!bg-white !text-black !w-auto rounded-md px-4 py-2"
-        />
-
-        <FacebookLoginButton
-          onClick={() => Url({ provider: "facebook" })}
-          className="!bg-[#3b5998] !w-auto rounded-md px-4 py-2"
-        />
-      </div>
-      <div className="space-y-2">
-        <form className="space-y-4">
-          <div className="w-full flex flex-col space-y-1">
-            <label htmlFor="email" className="text-sm font-medium text-foreground">
-              Email Address
-            </label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="your@email.com"
-              className="w-full outline-none"
-            />
-          </div>
-          <div className="w-full flex flex-col space-y-1">
-            <label htmlFor="password" className="text-sm font-medium text-foreground">
-              Password
-            </label>
-            <Input
-              id="password"
-              type="password"
-              placeholder="Your Password"
-              className="w-full outline-none"
-            />
-          </div>
-
-          <Button
-            type="submit"
-            size={"lg"}
-            onClick={() => Url({ provider: "manual" })}
-            className="cursor-pointer text-lg hover:bg-background"
-          >
-            Sign In
-          </Button>
-        </form>
-        <p>
-         Don’t have an account? <a href="/auth/sign-up" className="text-blue-500">Sign Up</a>
+    <div className="w-full max-w-lg mx-auto p-3 space-y-6 rounded-2xl">
+      <div className="text-center space-y-2">
+        <h1 className="text-2xl md:text-2xl font-bold text-foreground">Welcome Back</h1>
+        <p className="text-sm md:text-base text-muted-foreground">
+          Continue with your social account to sync your chats.
         </p>
       </div>
+
+<SocialLoginButtons onClick={(provider) => {
+  window.location.href = `${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/${provider}`;
+}} />
+
+      <div className="flex items-center gap-3">
+        <hr className="flex-1 border-muted" />
+        <span className="text-muted-foreground text-sm">or continue with email</span>
+        <hr className="flex-1 border-muted" />
+      </div>
+
+      <form onSubmit={() => Url({ provider: "manual" })} className="space-y-4">
+        <div>
+          <label htmlFor="email" className="block mb-1 text-sm font-medium text-foreground">
+            Email Address
+          </label>
+          <Input
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            className="w-full"
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="password" className="block mb-1 text-sm font-medium text-foreground">
+            Password
+          </label>
+          <Input
+            id="password"
+            type="password"
+            placeholder="••••••••"
+            className="w-full"
+            required
+          />
+        </div>
+
+        <Button type="submit" size="lg" className="w-full font-semibold">
+          Sign In
+        </Button>
+      </form>
+
+      <p className="text-center text-sm text-muted-foreground">
+        Don’t have an account?{" "}
+        <a href="/auth/sign-up" className="text-blue-600 font-semibold hover:underline">
+          Sign Up
+        </a>
+      </p>
     </div>
   );
-
-} 
+}
