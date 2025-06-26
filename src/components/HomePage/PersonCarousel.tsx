@@ -26,7 +26,7 @@ export default function PersonCarousel() {
   }, [index]);
 
   return (
-    <div className="absolute left-14 -bottom-5 md:h-full md:w-1/2 flex items-center justify-start pointer-events-none">
+    <div className="absolute left-3 md:left-14 bottom-0 md:-bottom-5 md:h-full md:w-1/2 flex items-center justify-start pointer-events-none">
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
