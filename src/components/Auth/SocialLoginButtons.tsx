@@ -17,8 +17,8 @@ export default function SocialLoginButtons({ onClick }: Props) {
                     key={name}
                     onClick={() => onClick(name.toLowerCase())}
                     variant="outline"
-                    size="lg"
-                    className={`w-12 px-2 cursor-pointer flex items-center justify-center md:justify-start gap-2 ${bgColor} ${textColor} ${hoverColor ?? ""}`}
+                    size="icon"
+                    className={`p-1 rounded-full cursor-pointer flex items-center justify-center md:justify-start gap-2 ${bgColor} ${textColor} ${hoverColor ?? ""}`}
                 >
                     <Image src={icon} alt={name} className="size-8" />
                 </Button>
