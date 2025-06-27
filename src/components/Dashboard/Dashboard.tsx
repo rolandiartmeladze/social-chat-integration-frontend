@@ -20,17 +20,16 @@ export default function Dashboard() {
       </p>
 
       <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-        <Button asChild size="lg">
-          <span onClick={() => router.push("/user/messages")}>📩 გადადი მესიჯებზე</span>
+        <Button onClick={() => router.push("/user/messages")} size="lg">
+          📩 გადადი მესიჯებზე
         </Button>
-        <Button asChild
+        <Button onClick={() =>
+          router.push(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/logout`)}
           size="lg"
           variant="outline"
           className="border-muted-foreground text-muted-foreground hover:text-foreground"
         >
-          <samp  onClick={() =>
-            router.push(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/logout`)
-          }> 🚪 გამოსვლა </samp>
+          🚪 გამოსვლა
         </Button>
       </div>
     </div>
