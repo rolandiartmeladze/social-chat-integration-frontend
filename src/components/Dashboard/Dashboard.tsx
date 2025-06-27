@@ -10,30 +10,29 @@ export default function Dashboard() {
   if (!isAuthenticated) router.push("/");
 
   return (
-      <div className="max-w-xl text-center space-y-6 p-8 rounded-2xl shadow-xl border border-border bg-secondary-foreground">
-        <h1 className="text-4xl font-bold text-foreground">
-          მოგესალმები, {user?.name || "მომხმარებელო"} 👋
-        </h1>
+    <div className="max-w-xl text-center space-y-6 p-8 rounded-2xl shadow-xl border border-border bg-secondary-foreground">
+      <h1 className="text-4xl font-bold text-foreground">
+        მოგესალმები, {user?.name || "მომხმარებელო"} 👋
+      </h1>
 
-        <p className="text-lg text-muted-foreground leading-relaxed">
-          აქ შეგიძლიათ გადახვიდეთ თქვენს მესიჯებზე და მართოთ თქვენი კომუნიკაცია ერთ სივრცეში.
-        </p>
+      <p className="text-lg text-muted-foreground leading-relaxed">
+        აქ შეგიძლიათ გადახვიდეთ თქვენს მესიჯებზე და მართოთ თქვენი კომუნიკაცია ერთ სივრცეში.
+      </p>
 
-        <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-          <Button asChild onClick={() => router.push("/user/messages")} size="lg">
-           <samp> 📩 გადადი მესიჯებზე </samp>
-          </Button>
-          <Button asChild
-            onClick={() =>
-              router.push(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/logout`)
-            }
-            size="lg"
-            variant="outline"
-            className="border-muted-foreground text-muted-foreground hover:text-foreground"
-          >
-           <samp> 🚪 გამოსვლა </samp>
-          </Button>
-        </div>
+      <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+        <Button asChild size="lg">
+          <span onClick={() => router.push("/user/messages")}>📩 გადადი მესიჯებზე</span>
+        </Button>
+        <Button asChild
+          size="lg"
+          variant="outline"
+          className="border-muted-foreground text-muted-foreground hover:text-foreground"
+        >
+          <samp  onClick={() =>
+            router.push(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/logout`)
+          }> 🚪 გამოსვლა </samp>
+        </Button>
       </div>
+    </div>
   );
 }
