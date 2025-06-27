@@ -13,10 +13,10 @@ export default function ChatInput() {
 
   if (!activeConvData) return <p>Need to select a conversation</p>;
 
-const recipientId = activeConvData.participants.user.id;
+  const recipientId = activeConvData.participants.user.id;
   const platform = activeConvData.platform;
 
-const sendMessage = async () => {
+  const sendMessage = async () => {
     if (!textMessage.trim()) return;
 
     try {
@@ -51,12 +51,12 @@ const sendMessage = async () => {
       <div className="flex gap-1 items-center">
         <Icons.smile />
         <Button
+          onClick={sendMessage}
           className="bg-muted cursor-pointer rounded-sm text-foreground"
           variant="secondary"
           size="sm"
-          onClick={sendMessage}
         >
-        <samp>Send</samp>
+          Send
         </Button>
       </div>
     </div>

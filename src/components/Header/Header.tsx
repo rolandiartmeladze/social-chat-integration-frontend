@@ -34,7 +34,8 @@ export default function Topbar() {
                             <Link href="/">
                                 <Icons.chat />
                                 <span className="text-base font-bold">Staff Chat</span>
-                            </Link> </Button>
+                            </Link>
+                        </Button>
                     </>
                 ) : (<>
                     {isMobile ? (<Icons.menu className="size-12 text-muted-foreground" />) : (<PublicMenu />)}
