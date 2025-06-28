@@ -1,15 +1,18 @@
 "use client";
 
 import UserProfile from "./UserProfile/UserProfile";
+import AddIntegratonButton from "./AddIntegrationButton";
 
 export default function Dashboard() {
   return (
     <div className="grid grid-cols-[auto_1fr] grid-rows-[auto_1fr] w-full h-full overflow-hidden rounded-2xl border-2">
-      <aside className="row-span-2 w-auto max-w-lg bg-secondary-foreground text-foreground flex flex-col border-r">
-        <div className="flex-1 overflow-y-auto p-4">
-          <UserProfile />
-        </div>
-        <div className="flex-1 overflow-y-auto p-4">Aside navigation</div>
+      <aside className="row-span-2 p-4 w-auto max-w-lg bg-secondary-foreground text-foreground flex flex-col border-r gap-3">
+        <UserProfile />
+        <AddIntegratonButton
+          variant="secondary"
+          className="bg-background/50 hover:bg-primary/50"
+        />
+
       </aside>
       <header className="col-start-2 bg-secondary-foreground flex items-center p-6 z-10">
         <h1 className="text-xl font-bold text-foreground">Dashboard Header</h1>
