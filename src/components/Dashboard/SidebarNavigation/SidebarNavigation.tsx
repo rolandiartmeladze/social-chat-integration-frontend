@@ -23,7 +23,7 @@ export default function SidebarNavigation() {
 
     return (
         <div className="flex flex-col overflow-hidden p-1">
-            <h1 className="pl-2 text-lg rounded-t-2xl font-black bg-primary">
+            <h1 className="p-1 pl-2 text-lg rounded-t-lg font-black bg-primary">
                 Connected Platforms:
             </h1>
             <ul className="space-y-2 border border-t-0 p-4 rounded-xl rounded-t-none bg-background">
