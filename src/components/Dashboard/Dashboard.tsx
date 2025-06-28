@@ -2,6 +2,7 @@
 
 import UserProfile from "./UserProfile/UserProfile";
 import AddIntegratonButton from "./AddIntegrationButton";
+import SidebarNavigation from "./SidebarNavigation/SidebarNavigation";
 
 export default function Dashboard() {
   return (
@@ -12,7 +13,7 @@ export default function Dashboard() {
           variant="secondary"
           className="bg-background/50 hover:bg-primary/50"
         />
-
+        <SidebarNavigation />
       </aside>
       <header className="col-start-2 bg-secondary-foreground flex items-center p-6 z-10">
         <h1 className="text-xl font-bold text-foreground">Dashboard Header</h1>
