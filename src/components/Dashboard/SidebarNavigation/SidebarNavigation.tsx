@@ -1,6 +1,5 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
 import { Icons } from "@/components/icons";
 
 export default function SidebarNavigation() {
@@ -23,24 +22,25 @@ export default function SidebarNavigation() {
     ];
 
     return (
-        <Card className="flex flex-col overflow-hidden p-1">
-            <CardContent className="overflow-y-auto h-auto max-h-[220px] px-2 py-2 scroll">
-                <div className="space-y-2">
-                    {connectedPlatforms.map((platform) => (
-                        <div
-                            key={platform.id}
-                            className="flex items-center gap-3 px-3 py-2 rounded-md bg-muted hover:bg-muted/70 transition"
-                        >
-                            {platform.icon}
-                            <div className="flex flex-col">
-                                <span className="text-sm font-medium text-foreground">
-                                    {platform.name}
-                                </span>
-                            </div>
+        <div className="flex flex-col overflow-hidden p-1">
+            <h1 className="pl-2 text-lg rounded-t-2xl font-black bg-primary">
+                Connected Platforms:
+            </h1>
+            <ul className="space-y-2 border border-t-0 p-4 rounded-xl rounded-t-none bg-background">
+                {connectedPlatforms.map((platform) => (
+                    <li
+                        key={platform.id}
+                        className="flex items-center gap-3 px-3 py-2 rounded-md bg-secondary hover:bg-secondary/40 cursor-pointer transition"
+                    >
+                        {platform.icon}
+                        <div className="flex flex-col">
+                            <span className="text-sm font-medium text-foreground">
+                                {platform.name}
+                            </span>
                         </div>
-                    ))}
-                </div>
-            </CardContent>
-        </Card>
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 }
