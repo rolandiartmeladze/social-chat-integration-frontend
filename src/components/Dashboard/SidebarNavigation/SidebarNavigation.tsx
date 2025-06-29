@@ -20,12 +20,12 @@ export default function SidebarNavigation() {
             icon: <Icons.instagram className="size-5 text-pink-500" />,
         },
         {
-            id: "2",
+            id: "4",
             name: "Messenger",
             icon: <Icons.messenger className="size-5 text-blue-600" />,
         },
         {
-            id: "3",
+            id: "5",
             name: "Instagram",
             icon: <Icons.instagram className="size-5 text-pink-500" />,
         },
