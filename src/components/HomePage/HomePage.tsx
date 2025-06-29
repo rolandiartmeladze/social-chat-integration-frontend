@@ -8,7 +8,7 @@ export default function Home() {
                 <HeroSection />
             </div>
 
-            <div className="order-2 lg:order-1 w-full lg:w-[35%] flex items-center justify-center p-6 py-0 md:py-6  bg-secondary-background lg:bg-secondary-background rounded-none lg:rounded-l-2xl">
+            <div className="order-2 lg:order-1 w-full bg-secondary lg:w-[35%] flex items-center justify-center p-6 py-0 md:py-6  bg-secondary-background lg:bg-secondary-background rounded-none lg:rounded-l-2xl">
                 <AuthShell />
             </div>
         </div>

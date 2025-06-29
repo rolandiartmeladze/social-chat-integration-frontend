@@ -10,7 +10,7 @@ export default function UserProfileHeader() {
     const { user } = useAuth();
 
     return (
-        <div className="w-full flex items-center justify-between mb-6 flex-wrap gap-4">
+        <div className="w-full flex items-center justify-between mb-6 flex-wrap gap-4 p-2 px-4 border-b rounded-b-xl">
             <div className="flex items-center gap-4">
                 <Avatar className="size-12">
                     <AvatarImage src={user?.avatarUrl} className="rounded-lg" />
@@ -32,7 +32,7 @@ export default function UserProfileHeader() {
                 asChild
                 variant="secondary"
                 size="icon"
-                className="relative text-foreground hover:bg-primary"
+                className="relative text-foreground bg-background hover:bg-primary"
             >
                 <Link href="/dashboard/profile/edit">
                     <Icons.pencil className="size-5 sm:size-6" />

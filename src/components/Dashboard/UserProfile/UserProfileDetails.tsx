@@ -38,7 +38,7 @@ export default function UserProfileDetails() {
             {profileFields.map(({ label, value, icon: Icon }, index) => (
                 <div
                     key={index}
-                    className="flex flex-row items-center gap-3 p-2 rounded-t-md border-b h-auto bg-muted/70"
+                    className="flex flex-row items-center gap-3 p-2 rounded-t-md border-b h-auto cursor-default border-l-1 border-l-primary"
                 >
                     <Icon />
                     <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2">
