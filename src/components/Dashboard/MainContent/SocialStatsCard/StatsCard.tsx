@@ -8,7 +8,7 @@ interface CardProps {
 
 export default function StatsCard({ icon, value, label }: CardProps) {
   return (
-    <Card className="bg-secondary text-foreground shadow-lg rounded-xl p-4 flex flex-row items-center gap-4">
+    <Card className="bg-secondary text-foreground shadow-lg rounded-md p-4 py-1 flex flex-row items-center gap-4">
       <div className="text-foreground">{icon}</div>
       <div className="w-auto">
         <h2 className="text-muted-foreground text-sm uppercase tracking-wide">{label}</h2>
