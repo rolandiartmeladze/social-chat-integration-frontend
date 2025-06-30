@@ -1,19 +1,13 @@
 import { Card } from "@/components/ui/card";
-import AddIntegrationButton from "../../AddIntegrationButton";
-import ActivityHeader from "./ActivityHeader";
+import ActivityHeader from "./Header/ActivityHeader";
+import ActivityCard from "./ActivityCard/ActivityCard";
 
 export default function RecentActivity({ className }: { className: string }) {
     return (
-        <section className={`${className}`}>
-            <Card className="h-full flex flex-col bg-background p-4">
-                <div className="flex items-end justify-between mb-4">
-                    <ActivityHeader />
-                    <AddIntegrationButton className="bg-[var(--info)]" />
-                </div>
-
-                <div className="flex-1 overflow-y-auto space-y-2">
-                    hear is content
-                </div>
+        <section className={`flex flex-col h-full ${className}`}>
+            <Card className="h-full flex flex-col bg-background p-4 gap-2">
+                <ActivityHeader />
+                <ActivityCard />
             </Card>
         </section>
     );
