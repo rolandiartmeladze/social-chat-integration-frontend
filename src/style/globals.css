@@ -48,18 +48,28 @@
 
 
 :root {
-  --background: #1F1F1E;        /* მთავარი ფონური ფერი */
-  --foreground: #FFFFFF;        /* ტექსტის ძირითადი ფერი */
-  --primary: #A50000;           /* ღილაკები ან აქტიური ელემენტები */
-  --secondary: #393837;        /* ბექგრაუნდ ბოქსებისთვის */
+  --background: #1F1F1E;
+  /* მთავარი ფონური ფერი */
+  --foreground: #FFFFFF;
+  /* ტექსტის ძირითადი ფერი */
+  --primary: #A50000;
+  /* ღილაკები ან აქტიური ელემენტები */
+  --secondary: #393837;
+  /* ბექგრაუნდ ბოქსებისთვის */
   --secondary-foreground: #787775;
-  --muted: #929292;             /* დაბალი კონტრასტის ტექსტისთვის */
+  --muted: #929292;
+  /* დაბალი კონტრასტის ტექსტისთვის */
   --muted-foreground: #C9C6C5;
-  --border: #4E4E4E;            /* საზღვარი ელემენტებისთვის */
-  --danger: #F44336;            /* შეცდომის ფერი */
-  --accent:#434241;            /* აქცენტის ფერი */
-  --info: #3771C8;              /* ლინკები ან ინფო ტექსტი */
+  --border: #4E4E4E;
+  /* საზღვარი ელემენტებისთვის */
+  --danger: #F44336;
+  /* შეცდომის ფერი */
+  --accent: #434241;
+  /* აქცენტის ფერი */
+  --info: #3771C8;
+  /* ლინკები ან ინფო ტექსტი */
 }
+
 .scroll::-webkit-scrollbar {
   width: 6px;
 }
@@ -83,11 +93,18 @@
   @apply border-border outline-ring/50;
 }
 
-  .bg-home {
-    background-image: url('../../public/bg1.jpg');
-    background-size: cover;
-    background-position: left;
-  }
+.dashboard-shadow {
+  box-shadow:
+    0px 4px 15px var(--primary),
+    0px 0px 15px var(--info);
+}
+
+.bg-home {
+  background-image: url('../../public/bg1.jpg');
+  background-size: cover;
+  background-position: left;
+}
+
 body {
   @apply bg-background text-foreground;
 }
