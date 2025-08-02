@@ -103,4 +103,4 @@ This project is private or licensed under your preferred license.
 ## 🗣 Contact
 - Made with ❤️ by Roland Artmeladze
 - Website: https://portfolio-inky-tau-14.vercel.app/
-  Email: Rartmeladze@gmail.com
+- Email: Rartmeladze@gmail.com
